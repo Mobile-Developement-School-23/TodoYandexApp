@@ -1,0 +1,580 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		793DDA7D2A3B312900EF2754 /* TodoItem+CSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793DDA7C2A3B312900EF2754 /* TodoItem+CSV.swift */; };
+		793DDA7E2A3B66FA00EF2754 /* JsonCompatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EE60F62A3B17D1002E94AA /* JsonCompatible.swift */; };
+		793DDA7F2A3B66FE00EF2754 /* TodoItem+CSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793DDA7C2A3B312900EF2754 /* TodoItem+CSV.swift */; };
+		793DDA812A3BCEFF00EF2754 /* CsvCompatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793DDA802A3BCEFF00EF2754 /* CsvCompatible.swift */; };
+		793DDA822A3BCEFF00EF2754 /* CsvCompatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793DDA802A3BCEFF00EF2754 /* CsvCompatible.swift */; };
+		793DDA842A3BD35700EF2754 /* FileCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793DDA832A3BD35700EF2754 /* FileCacheTests.swift */; };
+		79CB57D32A372279006418BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CB57D22A372279006418BC /* AppDelegate.swift */; };
+		79CB57D52A372279006418BC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CB57D42A372279006418BC /* SceneDelegate.swift */; };
+		79CB57D72A372279006418BC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CB57D62A372279006418BC /* ViewController.swift */; };
+		79CB57DA2A372279006418BC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79CB57D82A372279006418BC /* Main.storyboard */; };
+		79CB57DC2A37227A006418BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79CB57DB2A37227A006418BC /* Assets.xcassets */; };
+		79CB57DF2A37227A006418BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79CB57DD2A37227A006418BC /* LaunchScreen.storyboard */; };
+		79CB58072A3722BC006418BC /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CB58062A3722BC006418BC /* TodoItem.swift */; };
+		79CB580A2A3722C6006418BC /* TodoItemImportance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CB58092A3722C6006418BC /* TodoItemImportance.swift */; };
+		79CB580D2A372499006418BC /* FileCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CB580C2A372499006418BC /* FileCache.swift */; };
+		79CB58112A373A1C006418BC /* TodoItem+Json.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CB58102A373A1C006418BC /* TodoItem+Json.swift */; };
+		79CB8EF62A387194001A07EA /* TodoYandexAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CB8EF52A387194001A07EA /* TodoYandexAppTests.swift */; };
+		79CB8EFD2A3871B7001A07EA /* TodoItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CB8EFC2A3871B7001A07EA /* TodoItemTests.swift */; };
+		79CB8EFE2A3871DE001A07EA /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CB58062A3722BC006418BC /* TodoItem.swift */; };
+		79CB8EFF2A3871DE001A07EA /* FileCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CB580C2A372499006418BC /* FileCache.swift */; };
+		79CB8F002A3871DE001A07EA /* TodoItem+Json.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CB58102A373A1C006418BC /* TodoItem+Json.swift */; };
+		79CB8F012A3871DE001A07EA /* TodoItemImportance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CB58092A3722C6006418BC /* TodoItemImportance.swift */; };
+		79EE60F72A3B17D1002E94AA /* JsonCompatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EE60F62A3B17D1002E94AA /* JsonCompatible.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		79CB8EF72A387194001A07EA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 79CB57C72A372279006418BC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 79CB57CE2A372279006418BC;
+			remoteInfo = TodoYandexApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		793DDA7C2A3B312900EF2754 /* TodoItem+CSV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoItem+CSV.swift"; sourceTree = "<group>"; };
+		793DDA802A3BCEFF00EF2754 /* CsvCompatible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CsvCompatible.swift; sourceTree = "<group>"; };
+		793DDA832A3BD35700EF2754 /* FileCacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCacheTests.swift; sourceTree = "<group>"; };
+		79CB57CF2A372279006418BC /* TodoYandexApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoYandexApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		79CB57D22A372279006418BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		79CB57D42A372279006418BC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		79CB57D62A372279006418BC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		79CB57D92A372279006418BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		79CB57DB2A37227A006418BC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		79CB57DE2A37227A006418BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		79CB57E02A37227A006418BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		79CB58062A3722BC006418BC /* TodoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
+		79CB58092A3722C6006418BC /* TodoItemImportance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemImportance.swift; sourceTree = "<group>"; };
+		79CB580C2A372499006418BC /* FileCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCache.swift; sourceTree = "<group>"; };
+		79CB58102A373A1C006418BC /* TodoItem+Json.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoItem+Json.swift"; sourceTree = "<group>"; };
+		79CB8EF32A387194001A07EA /* TodoYandexAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodoYandexAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		79CB8EF52A387194001A07EA /* TodoYandexAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoYandexAppTests.swift; sourceTree = "<group>"; };
+		79CB8EFC2A3871B7001A07EA /* TodoItemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemTests.swift; sourceTree = "<group>"; };
+		79CB8F022A38C386001A07EA /* TodoYandexApp.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TodoYandexApp.xctestplan; sourceTree = "<group>"; };
+		79EE60F62A3B17D1002E94AA /* JsonCompatible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonCompatible.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		79CB57CC2A372279006418BC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		79CB8EF02A387194001A07EA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		79CB57C62A372279006418BC = {
+			isa = PBXGroup;
+			children = (
+				79CB8F022A38C386001A07EA /* TodoYandexApp.xctestplan */,
+				79CB57D12A372279006418BC /* TodoYandexApp */,
+				79CB8EF42A387194001A07EA /* TodoYandexAppTests */,
+				79CB57D02A372279006418BC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		79CB57D02A372279006418BC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				79CB57CF2A372279006418BC /* TodoYandexApp.app */,
+				79CB8EF32A387194001A07EA /* TodoYandexAppTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		79CB57D12A372279006418BC /* TodoYandexApp */ = {
+			isa = PBXGroup;
+			children = (
+				79CB58132A3748B8006418BC /* Extensions */,
+				79CB58022A372292006418BC /* Models */,
+				79CB57D22A372279006418BC /* AppDelegate.swift */,
+				79CB57D42A372279006418BC /* SceneDelegate.swift */,
+				79CB57D62A372279006418BC /* ViewController.swift */,
+				79CB57D82A372279006418BC /* Main.storyboard */,
+				79CB57DB2A37227A006418BC /* Assets.xcassets */,
+				79CB57DD2A37227A006418BC /* LaunchScreen.storyboard */,
+				79CB57E02A37227A006418BC /* Info.plist */,
+			);
+			path = TodoYandexApp;
+			sourceTree = "<group>";
+		};
+		79CB58022A372292006418BC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				79EE60F52A3B17BB002E94AA /* Protocols */,
+				79CB58052A3722AB006418BC /* Services */,
+				79CB58032A372298006418BC /* Enteties */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		79CB58032A372298006418BC /* Enteties */ = {
+			isa = PBXGroup;
+			children = (
+				79CB580F2A3739E7006418BC /* TodoItem */,
+			);
+			path = Enteties;
+			sourceTree = "<group>";
+		};
+		79CB58052A3722AB006418BC /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				79CB580C2A372499006418BC /* FileCache.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		79CB580F2A3739E7006418BC /* TodoItem */ = {
+			isa = PBXGroup;
+			children = (
+				79CB58062A3722BC006418BC /* TodoItem.swift */,
+				79CB58102A373A1C006418BC /* TodoItem+Json.swift */,
+				793DDA7C2A3B312900EF2754 /* TodoItem+CSV.swift */,
+				79CB58092A3722C6006418BC /* TodoItemImportance.swift */,
+			);
+			path = TodoItem;
+			sourceTree = "<group>";
+		};
+		79CB58132A3748B8006418BC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		79CB8EF42A387194001A07EA /* TodoYandexAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				79CB8EF52A387194001A07EA /* TodoYandexAppTests.swift */,
+				79CB8EFC2A3871B7001A07EA /* TodoItemTests.swift */,
+				793DDA832A3BD35700EF2754 /* FileCacheTests.swift */,
+			);
+			path = TodoYandexAppTests;
+			sourceTree = "<group>";
+		};
+		79EE60F52A3B17BB002E94AA /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				79EE60F62A3B17D1002E94AA /* JsonCompatible.swift */,
+				793DDA802A3BCEFF00EF2754 /* CsvCompatible.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		79CB57CE2A372279006418BC /* TodoYandexApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 79CB57F92A37227A006418BC /* Build configuration list for PBXNativeTarget "TodoYandexApp" */;
+			buildPhases = (
+				79CB57CB2A372279006418BC /* Sources */,
+				79CB57CC2A372279006418BC /* Frameworks */,
+				79CB57CD2A372279006418BC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TodoYandexApp;
+			productName = TodoYandexApp;
+			productReference = 79CB57CF2A372279006418BC /* TodoYandexApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		79CB8EF22A387194001A07EA /* TodoYandexAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 79CB8EFB2A387194001A07EA /* Build configuration list for PBXNativeTarget "TodoYandexAppTests" */;
+			buildPhases = (
+				79CB8EEF2A387194001A07EA /* Sources */,
+				79CB8EF02A387194001A07EA /* Frameworks */,
+				79CB8EF12A387194001A07EA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				79CB8EF82A387194001A07EA /* PBXTargetDependency */,
+			);
+			name = TodoYandexAppTests;
+			productName = TodoYandexAppTests;
+			productReference = 79CB8EF32A387194001A07EA /* TodoYandexAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		79CB57C72A372279006418BC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					79CB57CE2A372279006418BC = {
+						CreatedOnToolsVersion = 14.3;
+					};
+					79CB8EF22A387194001A07EA = {
+						CreatedOnToolsVersion = 14.3;
+						TestTargetID = 79CB57CE2A372279006418BC;
+					};
+				};
+			};
+			buildConfigurationList = 79CB57CA2A372279006418BC /* Build configuration list for PBXProject "TodoYandexApp" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 79CB57C62A372279006418BC;
+			productRefGroup = 79CB57D02A372279006418BC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				79CB57CE2A372279006418BC /* TodoYandexApp */,
+				79CB8EF22A387194001A07EA /* TodoYandexAppTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		79CB57CD2A372279006418BC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				79CB57DF2A37227A006418BC /* LaunchScreen.storyboard in Resources */,
+				79CB57DC2A37227A006418BC /* Assets.xcassets in Resources */,
+				79CB57DA2A372279006418BC /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		79CB8EF12A387194001A07EA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		79CB57CB2A372279006418BC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				79CB57D72A372279006418BC /* ViewController.swift in Sources */,
+				79EE60F72A3B17D1002E94AA /* JsonCompatible.swift in Sources */,
+				793DDA7D2A3B312900EF2754 /* TodoItem+CSV.swift in Sources */,
+				79CB57D32A372279006418BC /* AppDelegate.swift in Sources */,
+				79CB58072A3722BC006418BC /* TodoItem.swift in Sources */,
+				79CB58112A373A1C006418BC /* TodoItem+Json.swift in Sources */,
+				79CB580A2A3722C6006418BC /* TodoItemImportance.swift in Sources */,
+				79CB580D2A372499006418BC /* FileCache.swift in Sources */,
+				793DDA812A3BCEFF00EF2754 /* CsvCompatible.swift in Sources */,
+				79CB57D52A372279006418BC /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		79CB8EEF2A387194001A07EA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				79CB8F002A3871DE001A07EA /* TodoItem+Json.swift in Sources */,
+				793DDA7F2A3B66FE00EF2754 /* TodoItem+CSV.swift in Sources */,
+				793DDA7E2A3B66FA00EF2754 /* JsonCompatible.swift in Sources */,
+				79CB8EFD2A3871B7001A07EA /* TodoItemTests.swift in Sources */,
+				79CB8F012A3871DE001A07EA /* TodoItemImportance.swift in Sources */,
+				79CB8EFE2A3871DE001A07EA /* TodoItem.swift in Sources */,
+				79CB8EFF2A3871DE001A07EA /* FileCache.swift in Sources */,
+				793DDA822A3BCEFF00EF2754 /* CsvCompatible.swift in Sources */,
+				793DDA842A3BD35700EF2754 /* FileCacheTests.swift in Sources */,
+				79CB8EF62A387194001A07EA /* TodoYandexAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		79CB8EF82A387194001A07EA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 79CB57CE2A372279006418BC /* TodoYandexApp */;
+			targetProxy = 79CB8EF72A387194001A07EA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		79CB57D82A372279006418BC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				79CB57D92A372279006418BC /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		79CB57DD2A37227A006418BC /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				79CB57DE2A37227A006418BC /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		79CB57F72A37227A006418BC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		79CB57F82A37227A006418BC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		79CB57FA2A37227A006418BC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TodoYandexApp/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gdsed.TodoYandexApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		79CB57FB2A37227A006418BC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TodoYandexApp/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gdsed.TodoYandexApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		79CB8EF92A387194001A07EA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gdsed.TodoYandexAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TodoYandexApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TodoYandexApp";
+			};
+			name = Debug;
+		};
+		79CB8EFA2A387194001A07EA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gdsed.TodoYandexAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TodoYandexApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TodoYandexApp";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		79CB57CA2A372279006418BC /* Build configuration list for PBXProject "TodoYandexApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				79CB57F72A37227A006418BC /* Debug */,
+				79CB57F82A37227A006418BC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		79CB57F92A37227A006418BC /* Build configuration list for PBXNativeTarget "TodoYandexApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				79CB57FA2A37227A006418BC /* Debug */,
+				79CB57FB2A37227A006418BC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		79CB8EFB2A387194001A07EA /* Build configuration list for PBXNativeTarget "TodoYandexAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				79CB8EF92A387194001A07EA /* Debug */,
+				79CB8EFA2A387194001A07EA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 79CB57C72A372279006418BC /* Project object */;
+}

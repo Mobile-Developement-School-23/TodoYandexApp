@@ -1,0 +1,29 @@
+{
+  "configurations" : [
+    {
+      "id" : "D63E3639-ACC5-465E-AECA-E2A4A7F93FB9",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:TodoYandexApp.xcodeproj",
+      "identifier" : "79CB57CE2A372279006418BC",
+      "name" : "TodoYandexApp"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:TodoYandexApp.xcodeproj",
+        "identifier" : "79CB8EF22A387194001A07EA",
+        "name" : "TodoYandexAppTests"
+      }
+    }
+  ],
+  "version" : 1
+}
