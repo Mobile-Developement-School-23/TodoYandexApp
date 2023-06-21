@@ -8,12 +8,25 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    var todoDetailsController = TodoDetailsViewController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        view.backgroundColor = AssetsColors.backPrimary
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .black
+        button.setTitle("Open details", for: .normal)
+        button.addTarget(self, action: #selector(onButtonClick), for: .touchDown)
+        view.addSubview(button)
+        
+        button.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        button.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        
     }
-
-
+    
+    @objc private func onButtonClick() {
+        present(todoDetailsController, animated: true)
+    }
 }
 
