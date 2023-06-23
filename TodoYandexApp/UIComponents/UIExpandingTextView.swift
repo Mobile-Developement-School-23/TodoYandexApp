@@ -7,8 +7,11 @@
 
 import UIKit
 
-public class UIExpandingTextView: UITextView, UITextViewDelegate {
+///Has placeholder and autoexpanding features
+open class UIExpandingTextView: UITextView, UITextViewDelegate {
     private var isEditing = false
+    private var isEdited = false
+    private var textDidChangeHandlers = [UUID: (UITextView) -> Void]()
     
     ///Placeholder text color
     public var placeholderColor = UIColor.lightGray {
@@ -37,13 +40,14 @@ public class UIExpandingTextView: UITextView, UITextViewDelegate {
         }
     }
     
-    public override init(frame: CGRect, textContainer: NSTextContainer?) {
+    public override init(frame: CGRect = CGRect(), textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: textContainer)
         setup()
     }
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        setup()
     }
     
     public convenience init() {
@@ -53,6 +57,14 @@ public class UIExpandingTextView: UITextView, UITextViewDelegate {
     public func textViewDidBeginEditing(_ textView: UITextView) {
         isEditing = true
         removePlaceholder()
+        isEdited = true
+        textViewDidChange(self)
+    }
+    
+    public func textViewDidChange(_ textView: UITextView) {
+        for handler in textDidChangeHandlers.values {
+            handler(textView)
+        }
     }
     
     public func textViewDidEndEditing(_ textView: UITextView) {
@@ -60,16 +72,30 @@ public class UIExpandingTextView: UITextView, UITextViewDelegate {
         updatePlaceholder()
     }
     
+    public func addTextDidChangeHandler(_ handler: @escaping (UITextView) -> Void) -> UUID {
+        let id = UUID()
+        textDidChangeHandlers[id] = handler
+        
+        return id
+    }
+    
+    public func removeTextDidChangeHandler(withId id: UUID) {
+        textDidChangeHandlers.removeValue(forKey: id)
+    }
+    
     private func updatePlaceholder() {
-        if text.isEmpty {
+        if text.isEmpty || !isEdited {
+            isEdited = false
             text = placeholder
             textColor = placeholderColor
         }
     }
     
     private func removePlaceholder() {
-        textColor = defaultTextColor
-        text = ""
+        if !isEdited {
+            textColor = defaultTextColor
+            text = ""
+        }
     }
     
     private func setup() {

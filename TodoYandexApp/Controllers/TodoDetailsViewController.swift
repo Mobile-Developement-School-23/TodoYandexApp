@@ -7,30 +7,85 @@
 
 import UIKit
 
-class TodoDetailsViewController: UIViewController {
-    private var scrollView = UIScrollView()
+class TodoDetailsViewController: UIViewController, TodoDetailsCalendarSwitchDeleate {
+    private var scrollView: TodoDetailsScrollView!
     private var textInputView = UIExpandingTextView()
-    private var stackView = UIStackView()
+    private var stackView: TodoDetailsStackView!
+    private var fieldsStackView: VerticalStackLayoutView!
+    private let calendarView = UICalendarView()
+    private let deleteButton = TodoDetailsDeleteButton()
+    private let navigationView = TodoDetailsNavigationView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        hideKeyboardWhenTappedAround()
+        
+        scrollView = TodoDetailsScrollView()
         setupView()
         
+        stackView = TodoDetailsStackView()
         scrollView.addSubview(stackView)
         stackView.addArrangedSubview(textInputView)
         stackView.addSubview(textInputView)
         
-        setupScrollView()
-        setupStackView()
+        scrollView.setup(view)
+        stackView.setup(scrollView)
         setupTextInputView()
+        appendAndSetupFields()
+        deleteButton.setup(stackView)
+        navigationView.setup(view)
+    }
+    
+    func onValueChanged(value: Bool) {
+        if value {
+            _ = fieldsStackView.addSeparatedSubview(calendarView, animated: true)
+        } else {
+            _ = fieldsStackView.removeSeparatedSubview(calendarView, animated: true)
+        }
     }
     
     private func setupView() {
         view.backgroundColor = AssetsColors.backPrimary
         view.layoutMargins = LayoutValues.padding
         view.layoutMargins.bottom = 0
+        view.layoutMargins.top += 56
         view.layoutMarginsDidChange()
         view.addSubview(scrollView)
+        
+        navigationItem.title = "To do"
+        let leftItem = UIBarButtonItem()
+        leftItem.title = "Close"
+        let rightItem = UIBarButtonItem()
+        leftItem.title = "Save"
+        
+        navigationItem.leftBarButtonItem = leftItem
+        navigationItem.rightBarButtonItem = rightItem
+    }
+    
+    private func onTextViewChabged(_ view: UITextView) {
+        let bottomOffset = CGPoint(x: 0, y: scrollView.contentSize.height - scrollView.bounds.height / 2)
+        scrollView.setContentOffset(bottomOffset, animated: true)
+    }
+    
+    private func appendAndSetupFields() {
+        fieldsStackView = VerticalStackLayoutView()
+        let importance = TodoDetailsSegmentedControlWithLabel()
+        let calendarSwitch = TodoDetailsCalendarSwitch()
+        fieldsStackView = VerticalStackLayoutView()
+            .setPadding(LayoutValues.padding)
+            .setSeparatorColor(AssetsColors.supportSeparator)
+            .setSpacing(LayoutValues.spacing)
+            .withBackgroundColor(AssetsColors.backSecondary)
+            .addSeparatedSubview(importance)
+            .addSeparatedSubview(calendarSwitch)
+            .setRadius(LayoutValues.cornerRadius)
+        
+        stackView.addArrangedSubview(fieldsStackView)
+        stackView.addSubview(fieldsStackView)
+        importance.setup()
+        calendarSwitch.setup()
+        calendarSwitch.switchDelegate = self
+        fieldsStackView.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
     }
     
     private func setupTextInputView() {
@@ -44,27 +99,6 @@ class TodoDetailsViewController: UIViewController {
         textInputView.translatesAutoresizingMaskIntoConstraints = false
         textInputView.heightAnchor.constraint(greaterThanOrEqualToConstant: 120).isActive = true
         textInputView.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
-    }
-    
-    private func setupStackView() {
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
-        stackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
-        stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
-        stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
-        stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
-        
-        stackView.axis = NSLayoutConstraint.Axis.vertical
-        stackView.distribution = UIStackView.Distribution.equalSpacing
-        stackView.alignment = UIStackView.Alignment.center
-        stackView.spacing = LayoutValues.spacing
-    }
-    
-    private func setupScrollView() {
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor).isActive = true
-        scrollView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor).isActive = true
-        scrollView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor).isActive = true
-        scrollView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor).isActive = true
+        _ = textInputView.addTextDidChangeHandler(onTextViewChabged(_:))
     }
 }

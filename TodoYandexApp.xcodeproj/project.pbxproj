@@ -17,6 +17,15 @@
 		79A4F6C22A42280C003198F6 /* UIExpandingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A4F6C12A42280C003198F6 /* UIExpandingTextView.swift */; };
 		79A4F6C42A42F94F003198F6 /* AssetsAcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A4F6C32A42F94F003198F6 /* AssetsAcessor.swift */; };
 		79A4F6C92A430E63003198F6 /* LayoutValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A4F6C82A430E63003198F6 /* LayoutValues.swift */; };
+		79A4F6CD2A433315003198F6 /* VerticalStackLayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A4F6CC2A433315003198F6 /* VerticalStackLayoutView.swift */; };
+		79A4F6D12A438776003198F6 /* UIViewController+HideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A4F6D02A438776003198F6 /* UIViewController+HideKeyboard.swift */; };
+		79A4F6D62A438F60003198F6 /* TodoDetailsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A4F6D52A438F60003198F6 /* TodoDetailsStackView.swift */; };
+		79A4F6D82A438F71003198F6 /* TodoDetailsScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A4F6D72A438F71003198F6 /* TodoDetailsScrollView.swift */; };
+		79A4F6DA2A439AA8003198F6 /* TodoDetailsSegmentedControlWithLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A4F6D92A439AA8003198F6 /* TodoDetailsSegmentedControlWithLabel.swift */; };
+		79A4F6DC2A439BC8003198F6 /* StyledSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A4F6DB2A439BC8003198F6 /* StyledSegmentedControl.swift */; };
+		79A4F6DE2A43B1CC003198F6 /* TodoDetailsCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A4F6DD2A43B1CC003198F6 /* TodoDetailsCalendar.swift */; };
+		79A4F6E62A44411F003198F6 /* TodoDetailsDeleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A4F6E52A44411F003198F6 /* TodoDetailsDeleteButton.swift */; };
+		79A4F6E82A444B32003198F6 /* TodoDetailsNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A4F6E72A444B32003198F6 /* TodoDetailsNavigationView.swift */; };
 		79CB57D32A372279006418BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CB57D22A372279006418BC /* AppDelegate.swift */; };
 		79CB57D52A372279006418BC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CB57D42A372279006418BC /* SceneDelegate.swift */; };
 		79CB57D72A372279006418BC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CB57D62A372279006418BC /* ViewController.swift */; };
@@ -53,6 +62,15 @@
 		79A4F6C12A42280C003198F6 /* UIExpandingTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExpandingTextView.swift; sourceTree = "<group>"; };
 		79A4F6C32A42F94F003198F6 /* AssetsAcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsAcessor.swift; sourceTree = "<group>"; };
 		79A4F6C82A430E63003198F6 /* LayoutValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutValues.swift; sourceTree = "<group>"; };
+		79A4F6CC2A433315003198F6 /* VerticalStackLayoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalStackLayoutView.swift; sourceTree = "<group>"; };
+		79A4F6D02A438776003198F6 /* UIViewController+HideKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+HideKeyboard.swift"; sourceTree = "<group>"; };
+		79A4F6D52A438F60003198F6 /* TodoDetailsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDetailsStackView.swift; sourceTree = "<group>"; };
+		79A4F6D72A438F71003198F6 /* TodoDetailsScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDetailsScrollView.swift; sourceTree = "<group>"; };
+		79A4F6D92A439AA8003198F6 /* TodoDetailsSegmentedControlWithLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDetailsSegmentedControlWithLabel.swift; sourceTree = "<group>"; };
+		79A4F6DB2A439BC8003198F6 /* StyledSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyledSegmentedControl.swift; sourceTree = "<group>"; };
+		79A4F6DD2A43B1CC003198F6 /* TodoDetailsCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDetailsCalendar.swift; sourceTree = "<group>"; };
+		79A4F6E52A44411F003198F6 /* TodoDetailsDeleteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDetailsDeleteButton.swift; sourceTree = "<group>"; };
+		79A4F6E72A444B32003198F6 /* TodoDetailsNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDetailsNavigationView.swift; sourceTree = "<group>"; };
 		79CB57CF2A372279006418BC /* TodoYandexApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoYandexApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79CB57D22A372279006418BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		79CB57D42A372279006418BC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -101,6 +119,8 @@
 			isa = PBXGroup;
 			children = (
 				79A4F6C12A42280C003198F6 /* UIExpandingTextView.swift */,
+				79A4F6CC2A433315003198F6 /* VerticalStackLayoutView.swift */,
+				79A4F6DB2A439BC8003198F6 /* StyledSegmentedControl.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -112,6 +132,27 @@
 				79A4F6C82A430E63003198F6 /* LayoutValues.swift */,
 			);
 			path = Values;
+			sourceTree = "<group>";
+		};
+		79A4F6D32A438A7F003198F6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				79A4F6D42A438A90003198F6 /* TodoDetailsViewControllerViews */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		79A4F6D42A438A90003198F6 /* TodoDetailsViewControllerViews */ = {
+			isa = PBXGroup;
+			children = (
+				79A4F6D52A438F60003198F6 /* TodoDetailsStackView.swift */,
+				79A4F6D72A438F71003198F6 /* TodoDetailsScrollView.swift */,
+				79A4F6D92A439AA8003198F6 /* TodoDetailsSegmentedControlWithLabel.swift */,
+				79A4F6DD2A43B1CC003198F6 /* TodoDetailsCalendar.swift */,
+				79A4F6E52A44411F003198F6 /* TodoDetailsDeleteButton.swift */,
+				79A4F6E72A444B32003198F6 /* TodoDetailsNavigationView.swift */,
+			);
+			path = TodoDetailsViewControllerViews;
 			sourceTree = "<group>";
 		};
 		79CB57C62A372279006418BC = {
@@ -136,6 +177,7 @@
 		79CB57D12A372279006418BC /* TodoYandexApp */ = {
 			isa = PBXGroup;
 			children = (
+				79A4F6D32A438A7F003198F6 /* Views */,
 				79A4F6C72A430E14003198F6 /* Values */,
 				79A4F6C02A422743003198F6 /* UIComponents */,
 				79A4F6AF2A420221003198F6 /* Controllers */,
@@ -191,6 +233,7 @@
 		79CB58132A3748B8006418BC /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				79A4F6D02A438776003198F6 /* UIViewController+HideKeyboard.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -314,20 +357,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79A4F6D82A438F71003198F6 /* TodoDetailsScrollView.swift in Sources */,
 				79A4F6B12A42033F003198F6 /* TodoDetailsViewController.swift in Sources */,
 				79CB57D72A372279006418BC /* ViewController.swift in Sources */,
+				79A4F6CD2A433315003198F6 /* VerticalStackLayoutView.swift in Sources */,
+				79A4F6DC2A439BC8003198F6 /* StyledSegmentedControl.swift in Sources */,
+				79A4F6DA2A439AA8003198F6 /* TodoDetailsSegmentedControlWithLabel.swift in Sources */,
 				79EE60F72A3B17D1002E94AA /* JsonCompatible.swift in Sources */,
 				793DDA7D2A3B312900EF2754 /* TodoItem+CSV.swift in Sources */,
 				79CB57D32A372279006418BC /* AppDelegate.swift in Sources */,
+				79A4F6D62A438F60003198F6 /* TodoDetailsStackView.swift in Sources */,
 				79CB58072A3722BC006418BC /* TodoItem.swift in Sources */,
 				79CB58112A373A1C006418BC /* TodoItem+Json.swift in Sources */,
 				79CB580A2A3722C6006418BC /* TodoItemImportance.swift in Sources */,
+				79A4F6D12A438776003198F6 /* UIViewController+HideKeyboard.swift in Sources */,
 				79A4F6C22A42280C003198F6 /* UIExpandingTextView.swift in Sources */,
 				79CB580D2A372499006418BC /* FileCache.swift in Sources */,
 				793DDA812A3BCEFF00EF2754 /* CsvCompatible.swift in Sources */,
 				79A4F6C42A42F94F003198F6 /* AssetsAcessor.swift in Sources */,
 				79CB57D52A372279006418BC /* SceneDelegate.swift in Sources */,
 				79A4F6C92A430E63003198F6 /* LayoutValues.swift in Sources */,
+				79A4F6DE2A43B1CC003198F6 /* TodoDetailsCalendar.swift in Sources */,
+				79A4F6E82A444B32003198F6 /* TodoDetailsNavigationView.swift in Sources */,
+				79A4F6E62A44411F003198F6 /* TodoDetailsDeleteButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
