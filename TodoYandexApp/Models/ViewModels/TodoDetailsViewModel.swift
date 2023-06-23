@@ -5,17 +5,19 @@
 //  Created by Илья Колесников on 23.06.23.
 //
 
-import Foundation
+import UIKit
 
 class TodoDetailsViewModel {
     private let loadUrl: URL = URL.documentsDirectory.appending(component: "details.json")
     private let fileCache = FileCache<TodoItem>()
     private var todoItem: TodoItem? = nil
+    private var stringColor: String? = nil
     
     private(set) var text: String = ""
     private(set) var deadline: Date? = nil
     private(set) var importance: TodoItemImportance = .basic
     private(set) var isSaved = false
+    private(set) var color: UIColor?
     
     private var delegates = [() -> Void]()
     
@@ -23,12 +25,12 @@ class TodoDetailsViewModel {
     
     func saveChanges() {
         guard let todoItem = todoItem else {
-            self.todoItem = TodoItem(text: text, importance: importance, deadline: deadline)
+            self.todoItem = TodoItem(text: text, importance: importance, deadline: deadline, color: stringColor)
             saveItemAsJson(self.todoItem!)
             return
         }
         
-        self.todoItem = TodoItem(id: todoItem.id, text: text, importance: importance, deadline: deadline, done: todoItem.done, createdAt: todoItem.createdAt, changedAt: Date.now)
+        self.todoItem = TodoItem(id: todoItem.id, text: text, importance: importance, deadline: deadline, done: todoItem.done, createdAt: todoItem.createdAt, changedAt: Date.now, color: stringColor)
         saveItemAsJson(self.todoItem!)
     }
     
@@ -48,6 +50,11 @@ class TodoDetailsViewModel {
         text = todoItem?.text ?? ""
         deadline = todoItem?.deadline
         importance = todoItem?.importance ?? .basic
+        stringColor = todoItem?.color
+        
+        if stringColor != nil {
+            color = UIColor(hexString: stringColor!) ?? AssetsColors.labelPrimary
+        }
         notifyDelegates()
     }
     
@@ -80,7 +87,14 @@ class TodoDetailsViewModel {
         notifyDelegates()
     }
     
-    func onColorChanged() {
+    func onColorChanged(_ color: UIColor?) {
+        if color != AssetsColors.labelPrimary {
+            self.color = color
+            stringColor = color?.htmlRGBColor
+        } else {
+            self.color = nil
+            stringColor = nil
+        }
         notifyDelegates()
     }
     

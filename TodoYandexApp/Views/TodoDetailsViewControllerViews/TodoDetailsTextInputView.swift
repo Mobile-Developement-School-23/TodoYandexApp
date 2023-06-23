@@ -12,7 +12,7 @@ class TodoDetailsTextInputView: UIExpandingTextView, DeactivatedView {
         super.init(textContainer: textContainer)
         
         font = AssetsFonts.body
-        placeholder = "What to do?"
+        placeholder = "Что надо сделать?"
         textContainerInset = LayoutValues.padding
         defaultTextColor = AssetsColors.labelPrimary
         placeholderColor = AssetsColors.labelTertiary

@@ -17,6 +17,7 @@ class TodoDetailsStackView: UIStackView, DeactivatedView {
     private var dateSelection: UICalendarSelectionSingleDate!
     private var isCalendarViewShowed = false
     private var deleteButton: TodoDetailsDeleteButton!
+    private var colorLabel: UILabel!
     
     init(frame: CGRect = CGRect(), viewModel: TodoDetailsViewModel) {
         self.viewModel = viewModel
@@ -50,6 +51,8 @@ class TodoDetailsStackView: UIStackView, DeactivatedView {
     }
     
     private func configureSubviews() {
+        addColorLabel()
+        
         textView = TodoDetailsTextInputView()
         _ = textView.addTextDidChangeHandler(textValueChanged(_:))
         
@@ -68,6 +71,7 @@ class TodoDetailsStackView: UIStackView, DeactivatedView {
             .setSpacing(LayoutValues.spacing)
             .withBackgroundColor(AssetsColors.backSecondary)
             .addSeparatedSubview(importance)
+            .addSeparatedSubview(TodoDetailsSwitchingColorPicker(viewModel: viewModel))
             .addSeparatedSubview(calendarSwitch)
             .setRadius(LayoutValues.cornerRadius)
         
@@ -100,6 +104,16 @@ class TodoDetailsStackView: UIStackView, DeactivatedView {
     
     @objc private func onDeleteButtonClicked() {
         viewModel.deleteTodoItem()
+    }
+    
+    private func addColorLabel() {
+        colorLabel = UILabel()
+        addArrangedSubview(colorLabel)
+        addSubview(colorLabel)
+        colorLabel.text = "Цвет: " + (viewModel.color?.htmlRGBColor ?? AssetsColors.labelPrimary.htmlRGBColor)
+        colorLabel.textColor = viewModel.color ?? AssetsColors.labelPrimary
+        colorLabel.font = AssetsFonts.body
+        colorLabel.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
     }
     
     private func setupCalendarDelegates() {
@@ -162,5 +176,17 @@ extension TodoDetailsStackView {
             calendarSwitch.setValue(true)
         }
         deleteButton.isEnabled = viewModel.isSaved
+        
+        textView.textColor = viewModel.color ?? textView.textColor
+        
+        colorLabel.text = "Цвет: " + (viewModel.color?.htmlRGBColor ?? AssetsColors.labelPrimary.htmlRGBColor)
+        colorLabel.textColor = viewModel.color ?? AssetsColors.labelPrimary
+        
+        if (colorLabel.isHidden && viewModel.color != nil) || (viewModel.color == nil && !colorLabel.isHidden) {
+            UIView.transition(with: self, duration: 0.25, options: [.transitionCrossDissolve], animations: {
+                self.colorLabel.isHidden = self.viewModel.color == nil
+                self.colorLabel.alpha = self.viewModel.color == nil ? 0 : 1
+            }, completion: nil)
+        }
     }
 }

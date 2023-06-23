@@ -23,12 +23,16 @@
 		79A4F6D82A438F71003198F6 /* TodoDetailsScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A4F6D72A438F71003198F6 /* TodoDetailsScrollView.swift */; };
 		79A4F6DA2A439AA8003198F6 /* TodoDetailsSegmentedControlWithLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A4F6D92A439AA8003198F6 /* TodoDetailsSegmentedControlWithLabel.swift */; };
 		79A4F6DC2A439BC8003198F6 /* StyledSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A4F6DB2A439BC8003198F6 /* StyledSegmentedControl.swift */; };
-		79A4F6DE2A43B1CC003198F6 /* TodoDetailsCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A4F6DD2A43B1CC003198F6 /* TodoDetailsCalendar.swift */; };
+		79A4F6DE2A43B1CC003198F6 /* TodoDetailsCalendarSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A4F6DD2A43B1CC003198F6 /* TodoDetailsCalendarSwitch.swift */; };
 		79A4F6E62A44411F003198F6 /* TodoDetailsDeleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A4F6E52A44411F003198F6 /* TodoDetailsDeleteButton.swift */; };
 		79A4F6E82A444B32003198F6 /* TodoDetailsNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A4F6E72A444B32003198F6 /* TodoDetailsNavigationView.swift */; };
 		79A4F6ED2A45A0E1003198F6 /* DeactivatedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A4F6EC2A45A0E1003198F6 /* DeactivatedView.swift */; };
 		79A4F6EF2A45B654003198F6 /* TodoDetailsTextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A4F6EE2A45B654003198F6 /* TodoDetailsTextInputView.swift */; };
 		79A4F6F32A45C218003198F6 /* TodoDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A4F6F22A45C218003198F6 /* TodoDetailsViewModel.swift */; };
+		79A4F6F52A462B07003198F6 /* TodoDetailsSwitchingColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A4F6F42A462B07003198F6 /* TodoDetailsSwitchingColorPicker.swift */; };
+		79A4F6F82A464396003198F6 /* gradient.png in Resources */ = {isa = PBXBuildFile; fileRef = 79A4F6F72A464396003198F6 /* gradient.png */; };
+		79A4F6FA2A465489003198F6 /* UIView+colorOfPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A4F6F92A465489003198F6 /* UIView+colorOfPoint.swift */; };
+		79A4F6FC2A465A7B003198F6 /* UIColor+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A4F6FB2A465A7B003198F6 /* UIColor+String.swift */; };
 		79CB57D32A372279006418BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CB57D22A372279006418BC /* AppDelegate.swift */; };
 		79CB57D52A372279006418BC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CB57D42A372279006418BC /* SceneDelegate.swift */; };
 		79CB57D72A372279006418BC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CB57D62A372279006418BC /* ViewController.swift */; };
@@ -71,12 +75,16 @@
 		79A4F6D72A438F71003198F6 /* TodoDetailsScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDetailsScrollView.swift; sourceTree = "<group>"; };
 		79A4F6D92A439AA8003198F6 /* TodoDetailsSegmentedControlWithLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDetailsSegmentedControlWithLabel.swift; sourceTree = "<group>"; };
 		79A4F6DB2A439BC8003198F6 /* StyledSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyledSegmentedControl.swift; sourceTree = "<group>"; };
-		79A4F6DD2A43B1CC003198F6 /* TodoDetailsCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDetailsCalendar.swift; sourceTree = "<group>"; };
+		79A4F6DD2A43B1CC003198F6 /* TodoDetailsCalendarSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDetailsCalendarSwitch.swift; sourceTree = "<group>"; };
 		79A4F6E52A44411F003198F6 /* TodoDetailsDeleteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDetailsDeleteButton.swift; sourceTree = "<group>"; };
 		79A4F6E72A444B32003198F6 /* TodoDetailsNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDetailsNavigationView.swift; sourceTree = "<group>"; };
 		79A4F6EC2A45A0E1003198F6 /* DeactivatedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeactivatedView.swift; sourceTree = "<group>"; };
 		79A4F6EE2A45B654003198F6 /* TodoDetailsTextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDetailsTextInputView.swift; sourceTree = "<group>"; };
 		79A4F6F22A45C218003198F6 /* TodoDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDetailsViewModel.swift; sourceTree = "<group>"; };
+		79A4F6F42A462B07003198F6 /* TodoDetailsSwitchingColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDetailsSwitchingColorPicker.swift; sourceTree = "<group>"; };
+		79A4F6F72A464396003198F6 /* gradient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gradient.png; sourceTree = "<group>"; };
+		79A4F6F92A465489003198F6 /* UIView+colorOfPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+colorOfPoint.swift"; sourceTree = "<group>"; };
+		79A4F6FB2A465A7B003198F6 /* UIColor+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+String.swift"; sourceTree = "<group>"; };
 		79CB57CF2A372279006418BC /* TodoYandexApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoYandexApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79CB57D22A372279006418BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		79CB57D42A372279006418BC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -155,10 +163,11 @@
 				79A4F6D52A438F60003198F6 /* TodoDetailsStackView.swift */,
 				79A4F6D72A438F71003198F6 /* TodoDetailsScrollView.swift */,
 				79A4F6D92A439AA8003198F6 /* TodoDetailsSegmentedControlWithLabel.swift */,
-				79A4F6DD2A43B1CC003198F6 /* TodoDetailsCalendar.swift */,
+				79A4F6DD2A43B1CC003198F6 /* TodoDetailsCalendarSwitch.swift */,
 				79A4F6E52A44411F003198F6 /* TodoDetailsDeleteButton.swift */,
 				79A4F6E72A444B32003198F6 /* TodoDetailsNavigationView.swift */,
 				79A4F6EE2A45B654003198F6 /* TodoDetailsTextInputView.swift */,
+				79A4F6F42A462B07003198F6 /* TodoDetailsSwitchingColorPicker.swift */,
 			);
 			path = TodoDetailsViewControllerViews;
 			sourceTree = "<group>";
@@ -177,6 +186,14 @@
 				79A4F6F22A45C218003198F6 /* TodoDetailsViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		79A4F6F62A46437A003198F6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				79A4F6F72A464396003198F6 /* gradient.png */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		79CB57C62A372279006418BC = {
@@ -201,6 +218,7 @@
 		79CB57D12A372279006418BC /* TodoYandexApp */ = {
 			isa = PBXGroup;
 			children = (
+				79A4F6F62A46437A003198F6 /* Resources */,
 				79A4F6D32A438A7F003198F6 /* Views */,
 				79A4F6C72A430E14003198F6 /* Values */,
 				79A4F6C02A422743003198F6 /* UIComponents */,
@@ -259,6 +277,8 @@
 			isa = PBXGroup;
 			children = (
 				79A4F6D02A438776003198F6 /* UIViewController+HideKeyboard.swift */,
+				79A4F6F92A465489003198F6 /* UIView+colorOfPoint.swift */,
+				79A4F6FB2A465A7B003198F6 /* UIColor+String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -364,6 +384,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				79CB57DF2A37227A006418BC /* LaunchScreen.storyboard in Resources */,
+				79A4F6F82A464396003198F6 /* gradient.png in Resources */,
 				79CB57DC2A37227A006418BC /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -384,14 +405,17 @@
 			files = (
 				79A4F6D82A438F71003198F6 /* TodoDetailsScrollView.swift in Sources */,
 				79A4F6B12A42033F003198F6 /* TodoDetailsViewController.swift in Sources */,
+				79A4F6FA2A465489003198F6 /* UIView+colorOfPoint.swift in Sources */,
 				79CB57D72A372279006418BC /* ViewController.swift in Sources */,
 				79A4F6CD2A433315003198F6 /* VerticalStackLayoutView.swift in Sources */,
 				79A4F6DC2A439BC8003198F6 /* StyledSegmentedControl.swift in Sources */,
 				79A4F6ED2A45A0E1003198F6 /* DeactivatedView.swift in Sources */,
 				79A4F6DA2A439AA8003198F6 /* TodoDetailsSegmentedControlWithLabel.swift in Sources */,
+				79A4F6FC2A465A7B003198F6 /* UIColor+String.swift in Sources */,
 				79A4F6EF2A45B654003198F6 /* TodoDetailsTextInputView.swift in Sources */,
 				79EE60F72A3B17D1002E94AA /* JsonCompatible.swift in Sources */,
 				793DDA7D2A3B312900EF2754 /* TodoItem+CSV.swift in Sources */,
+				79A4F6F52A462B07003198F6 /* TodoDetailsSwitchingColorPicker.swift in Sources */,
 				79CB57D32A372279006418BC /* AppDelegate.swift in Sources */,
 				79A4F6D62A438F60003198F6 /* TodoDetailsStackView.swift in Sources */,
 				79CB58072A3722BC006418BC /* TodoItem.swift in Sources */,
@@ -404,7 +428,7 @@
 				79A4F6C42A42F94F003198F6 /* AssetsAcessor.swift in Sources */,
 				79CB57D52A372279006418BC /* SceneDelegate.swift in Sources */,
 				79A4F6C92A430E63003198F6 /* LayoutValues.swift in Sources */,
-				79A4F6DE2A43B1CC003198F6 /* TodoDetailsCalendar.swift in Sources */,
+				79A4F6DE2A43B1CC003198F6 /* TodoDetailsCalendarSwitch.swift in Sources */,
 				79A4F6E82A444B32003198F6 /* TodoDetailsNavigationView.swift in Sources */,
 				79A4F6E62A44411F003198F6 /* TodoDetailsDeleteButton.swift in Sources */,
 				79A4F6F32A45C218003198F6 /* TodoDetailsViewModel.swift in Sources */,

@@ -26,8 +26,13 @@ class TodoDetailsCalendarSwitch: UIView {
     }
     
     func setDateValueText() {
-        dateLabel.text = viewModel.deadline?.formatted()
-        dateLabel.isHidden = false
+        if viewModel.deadline != nil {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .medium
+            dateFormatter.timeStyle = .none
+            dateLabel.text = dateFormatter.string(from: viewModel.deadline!)
+            dateLabel.isHidden = false
+        }
     }
     
     func setValue(_ value: Bool) {
@@ -37,7 +42,7 @@ class TodoDetailsCalendarSwitch: UIView {
     private func getLabel() -> UILabel {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Deadline"
+        label.text = "Сделать до"
         label.font = AssetsFonts.body
         label.textColor = AssetsColors.labelPrimary
         
@@ -52,7 +57,7 @@ class TodoDetailsCalendarSwitch: UIView {
         let label = getLabel()
         
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
-        dateLabel.text = "12 june 2003"
+        dateLabel.text = ""
         dateLabel.font = AssetsFonts.footnote
         dateLabel.textColor = AssetsColors.colorBlue
         

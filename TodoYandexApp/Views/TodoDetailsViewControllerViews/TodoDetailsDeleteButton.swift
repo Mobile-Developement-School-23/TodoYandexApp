@@ -10,8 +10,8 @@ import UIKit
 class TodoDetailsDeleteButton: UIButton, DeactivatedView {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setTitle("Delete", for: .normal)
-        setTitle("Delete", for: .disabled)
+        setTitle("Удалить", for: .normal)
+        setTitle("Удалить", for: .disabled)
         backgroundColor = AssetsColors.backSecondary
         setTitleColor(AssetsColors.colorRed, for: .normal)
         setTitleColor(AssetsColors.labelTertiary, for: .disabled)

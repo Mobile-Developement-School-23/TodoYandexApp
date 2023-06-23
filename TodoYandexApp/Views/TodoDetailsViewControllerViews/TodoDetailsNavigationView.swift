@@ -36,14 +36,14 @@ class TodoDetailsNavigationView: UIView, DeactivatedView {
         let cancel = UIButton()
         cancel.translatesAutoresizingMaskIntoConstraints = false
         cancel.backgroundColor = .none
-        cancel.setTitle("Cancel", for: .normal)
+        cancel.setTitle("Отменить", for: .normal)
         cancel.setTitleColor(AssetsColors.colorBlue, for: .normal)
         cancel.addTarget(self, action: #selector(closeButtonClicked), for: .touchDown)
         addSubview(cancel)
         
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "To do"
+        label.text = "Дело"
         label.textColor = AssetsColors.labelPrimary
         label.font = AssetsFonts.headline
         addSubview(label)
@@ -51,7 +51,7 @@ class TodoDetailsNavigationView: UIView, DeactivatedView {
         let save = UIButton()
         save.translatesAutoresizingMaskIntoConstraints = false
         save.backgroundColor = .none
-        save.setTitle("Save", for: .normal)
+        save.setTitle("Сохранить", for: .normal)
         save.titleLabel?.font = AssetsFonts.headline
         save.setTitleColor(AssetsColors.colorBlue, for: .normal)
         save.setTitleColor(AssetsColors.labelTertiary, for: .disabled)

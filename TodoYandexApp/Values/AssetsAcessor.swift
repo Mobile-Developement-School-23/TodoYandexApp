@@ -35,3 +35,7 @@ class AssetsFonts {
     static let subhead = UIFont.systemFont(ofSize: 15, weight: .regular)
     static let footnote = UIFont.systemFont(ofSize: 13, weight: .semibold)
 }
+
+class AssetsImages {
+    static let gradientImage = UIImage(named: "Gradient")
+}

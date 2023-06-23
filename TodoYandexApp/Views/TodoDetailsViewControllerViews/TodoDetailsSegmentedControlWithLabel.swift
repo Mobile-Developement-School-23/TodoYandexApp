@@ -34,7 +34,7 @@ class TodoDetailsSegmentedControlWithLabel: UIView {
         
         let items = [
             UIImage(systemName: "arrow.down")!.withTintColor(AssetsColors.colorGray, renderingMode: .alwaysOriginal),
-            "no",
+            "нет",
             exclamation] as [Any]
         
         segmentedControl = StyledSegmentedControl(items: items)
@@ -51,7 +51,7 @@ class TodoDetailsSegmentedControlWithLabel: UIView {
     private func getLabel() -> UILabel {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Importance"
+        label.text = "Важность"
         label.font = AssetsFonts.body
         label.textColor = AssetsColors.labelPrimary
         
