@@ -12,18 +12,32 @@ class TodoDetailsCalendarSwitch: UIView {
     private let dateLabel = UILabel()
     var switchDelegate: TodoDetailsCalendarSwitchDeleate?
     
-    func setup() {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
-        
-        let switchControl = UISwitch()
-        switchControl.translatesAutoresizingMaskIntoConstraints = false
-        switchControl.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
-        
+        configureSubviews()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func getLabel() -> UILabel {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Deadline"
         label.font = AssetsFonts.body
         label.textColor = AssetsColors.labelPrimary
+        
+        return label
+    }
+    
+    private func configureSubviews() {
+        let switchControl = UISwitch()
+        switchControl.translatesAutoresizingMaskIntoConstraints = false
+        switchControl.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        
+        let label = getLabel()
         
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
         dateLabel.text = "12 june 2003"

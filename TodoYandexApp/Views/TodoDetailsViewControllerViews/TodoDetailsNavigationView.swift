@@ -7,16 +7,30 @@
 
 import UIKit
 
-class TodoDetailsNavigationView: UIView {
-    func setup(_ view: UIView) {
-        translatesAutoresizingMaskIntoConstraints = false
+class TodoDetailsNavigationView: UIView, DeactevatedView {
+    func activateViewWithAnchors(top: NSLayoutYAxisAnchor?, bottom: NSLayoutYAxisAnchor? = nil, leading: NSLayoutXAxisAnchor?, trailing: NSLayoutXAxisAnchor?, width: NSLayoutDimension? = nil, height: NSLayoutDimension? = nil, centerX: NSLayoutXAxisAnchor? = nil, centerY: NSLayoutYAxisAnchor? = nil) {
         
-        view.addSubview(self)
-        leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor).isActive = true
-        trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor).isActive = true
-        topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        guard let leading = leading, let trailing = trailing, let top = top else {
+            return
+        }
+        
+        leadingAnchor.constraint(equalTo: leading).isActive = true
+        trailingAnchor.constraint(equalTo: trailing).isActive = true
+        topAnchor.constraint(equalTo: top).isActive = true
         heightAnchor.constraint(equalToConstant: 56).isActive = true
-        
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        translatesAutoresizingMaskIntoConstraints = false
+        configureSubviews()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func configureSubviews() {
         let cancel = UIButton()
         cancel.translatesAutoresizingMaskIntoConstraints = false
         cancel.backgroundColor = .none
@@ -46,6 +60,5 @@ class TodoDetailsNavigationView: UIView {
         label.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         save.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         cancel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-
     }
 }

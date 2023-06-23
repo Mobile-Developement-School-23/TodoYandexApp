@@ -26,6 +26,8 @@
 		79A4F6DE2A43B1CC003198F6 /* TodoDetailsCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A4F6DD2A43B1CC003198F6 /* TodoDetailsCalendar.swift */; };
 		79A4F6E62A44411F003198F6 /* TodoDetailsDeleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A4F6E52A44411F003198F6 /* TodoDetailsDeleteButton.swift */; };
 		79A4F6E82A444B32003198F6 /* TodoDetailsNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A4F6E72A444B32003198F6 /* TodoDetailsNavigationView.swift */; };
+		79A4F6ED2A45A0E1003198F6 /* DeactevatedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A4F6EC2A45A0E1003198F6 /* DeactevatedView.swift */; };
+		79A4F6EF2A45B654003198F6 /* TodoDetailsTextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A4F6EE2A45B654003198F6 /* TodoDetailsTextInputView.swift */; };
 		79CB57D32A372279006418BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CB57D22A372279006418BC /* AppDelegate.swift */; };
 		79CB57D52A372279006418BC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CB57D42A372279006418BC /* SceneDelegate.swift */; };
 		79CB57D72A372279006418BC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CB57D62A372279006418BC /* ViewController.swift */; };
@@ -71,6 +73,8 @@
 		79A4F6DD2A43B1CC003198F6 /* TodoDetailsCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDetailsCalendar.swift; sourceTree = "<group>"; };
 		79A4F6E52A44411F003198F6 /* TodoDetailsDeleteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDetailsDeleteButton.swift; sourceTree = "<group>"; };
 		79A4F6E72A444B32003198F6 /* TodoDetailsNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDetailsNavigationView.swift; sourceTree = "<group>"; };
+		79A4F6EC2A45A0E1003198F6 /* DeactevatedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeactevatedView.swift; sourceTree = "<group>"; };
+		79A4F6EE2A45B654003198F6 /* TodoDetailsTextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDetailsTextInputView.swift; sourceTree = "<group>"; };
 		79CB57CF2A372279006418BC /* TodoYandexApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoYandexApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79CB57D22A372279006418BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		79CB57D42A372279006418BC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -137,6 +141,7 @@
 		79A4F6D32A438A7F003198F6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				79A4F6EB2A459FBE003198F6 /* Protocols */,
 				79A4F6D42A438A90003198F6 /* TodoDetailsViewControllerViews */,
 			);
 			path = Views;
@@ -151,8 +156,17 @@
 				79A4F6DD2A43B1CC003198F6 /* TodoDetailsCalendar.swift */,
 				79A4F6E52A44411F003198F6 /* TodoDetailsDeleteButton.swift */,
 				79A4F6E72A444B32003198F6 /* TodoDetailsNavigationView.swift */,
+				79A4F6EE2A45B654003198F6 /* TodoDetailsTextInputView.swift */,
 			);
 			path = TodoDetailsViewControllerViews;
+			sourceTree = "<group>";
+		};
+		79A4F6EB2A459FBE003198F6 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				79A4F6EC2A45A0E1003198F6 /* DeactevatedView.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		79CB57C62A372279006418BC = {
@@ -362,7 +376,9 @@
 				79CB57D72A372279006418BC /* ViewController.swift in Sources */,
 				79A4F6CD2A433315003198F6 /* VerticalStackLayoutView.swift in Sources */,
 				79A4F6DC2A439BC8003198F6 /* StyledSegmentedControl.swift in Sources */,
+				79A4F6ED2A45A0E1003198F6 /* DeactevatedView.swift in Sources */,
 				79A4F6DA2A439AA8003198F6 /* TodoDetailsSegmentedControlWithLabel.swift in Sources */,
+				79A4F6EF2A45B654003198F6 /* TodoDetailsTextInputView.swift in Sources */,
 				79EE60F72A3B17D1002E94AA /* JsonCompatible.swift in Sources */,
 				793DDA7D2A3B312900EF2754 /* TodoItem+CSV.swift in Sources */,
 				79CB57D32A372279006418BC /* AppDelegate.swift in Sources */,
