@@ -25,6 +25,7 @@ extension TodoItem: JsonCompatible {
         if changedAt != nil {
             jsonDictionary[CodingKeys.changedAt.stringValue] = changedAt!.timeIntervalSince1970
         }
+        jsonDictionary[CodingKeys.color.stringValue] = color
         
         return jsonDictionary
     }
@@ -66,6 +67,7 @@ extension TodoItem: JsonCompatible {
         let id = dict[CodingKeys.id.stringValue] as? String ?? UUID().uuidString
         let text = dict[CodingKeys.text.stringValue] as? String
         let done = dict[CodingKeys.done.stringValue] as? Bool ?? false
+        let color = dict[CodingKeys.color.stringValue] as? String
         let importance: TodoItemImportance
         if let importanceString = dict[CodingKeys.importance.stringValue] as? String {
             importance = TodoItemImportance(rawValue: importanceString) ?? .basic
@@ -95,7 +97,7 @@ extension TodoItem: JsonCompatible {
             return nil
         }
         
-        return TodoItem(id: id, text: text!, importance: importance, deadline: deadline, done: done, createdAt: createdAt!, changedAt: changedAt)
+        return TodoItem(id: id, text: text!, importance: importance, deadline: deadline, done: done, createdAt: createdAt!, changedAt: changedAt, color: color)
     }
     
     enum CodingKeys: String, CodingKey {
@@ -106,5 +108,6 @@ extension TodoItem: JsonCompatible {
         case deadline
         case createdAt
         case changedAt
+        case color
     }
 }

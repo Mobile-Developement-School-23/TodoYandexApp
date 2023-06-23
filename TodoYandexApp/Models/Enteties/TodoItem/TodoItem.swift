@@ -15,8 +15,9 @@ struct TodoItem: Identifiable, Equatable {
     let done: Bool
     let createdAt: Date
     let changedAt: Date?
+    let color: String?
     
-    init(id: String = UUID().uuidString, text: String, importance: TodoItemImportance = .basic, deadline: Date? = nil, done: Bool = false, createdAt: Date = Date.now, changedAt: Date? = nil) {
+    init(id: String = UUID().uuidString, text: String, importance: TodoItemImportance = .basic, deadline: Date? = nil, done: Bool = false, createdAt: Date = Date.now, changedAt: Date? = nil, color: String? = nil) {
         self.id = id
         self.text = text
         self.importance = importance
@@ -24,6 +25,7 @@ struct TodoItem: Identifiable, Equatable {
         self.done = done
         self.createdAt = createdAt
         self.changedAt = changedAt
+        self.color = color
     }
     
     static func == (lhs: TodoItem, rhs: TodoItem) -> Bool {
