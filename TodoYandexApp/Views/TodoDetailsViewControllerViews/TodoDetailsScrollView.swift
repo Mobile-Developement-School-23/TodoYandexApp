@@ -7,8 +7,11 @@
 
 import UIKit
 
-class TodoDetailsScrollView: UIScrollView, DeactevatedView {
-    override init(frame: CGRect) {
+class TodoDetailsScrollView: UIScrollView, DeactivatedView {
+    private let viewModel: TodoDetailsViewModel
+    
+    init(frame: CGRect = CGRect(), viewModel: TodoDetailsViewModel) {
+        self.viewModel = viewModel
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
         showsVerticalScrollIndicator = false
@@ -34,7 +37,7 @@ class TodoDetailsScrollView: UIScrollView, DeactevatedView {
     }
     
     private func configureSubviews() {
-        let stackView = TodoDetailsStackView()
+        let stackView = TodoDetailsStackView(viewModel: viewModel)
         addSubview(stackView)
         stackView.activateViewWithAnchors(top: topAnchor, bottom: bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor, width: widthAnchor)
     }

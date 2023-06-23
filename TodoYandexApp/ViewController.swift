@@ -8,8 +8,6 @@
 import UIKit
 
 class ViewController: UIViewController {
-    var todoDetailsController = TodoDetailsViewController()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = AssetsColors.backPrimary
@@ -26,7 +24,7 @@ class ViewController: UIViewController {
     }
     
     @objc private func onButtonClick() {
-        present(todoDetailsController, animated: true)
+        present(TodoDetailsViewController(), animated: true)
     }
 }
 

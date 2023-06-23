@@ -91,7 +91,7 @@ open class VerticalStackLayoutView: UIStackView {
         addArrangedSubview(separator)
         addSubview(separator)
         separator.translatesAutoresizingMaskIntoConstraints = false
-        separator.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
+        separator.heightAnchor.constraint(equalToConstant: 1).isActive = true
         separator.backgroundColor = separatorColor
         separator.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor).isActive = true
         separator.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor).isActive = true

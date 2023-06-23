@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TodoDetailsDeleteButton: UIButton, DeactevatedView {
+class TodoDetailsDeleteButton: UIButton, DeactivatedView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setTitle("Delete", for: .normal)

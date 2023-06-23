@@ -8,7 +8,11 @@
 import UIKit
 
 class TodoDetailsSegmentedControlWithLabel: UIView {
-    override init(frame: CGRect) {
+    private let viewModel: TodoDetailsViewModel
+    private var segmentedControl: StyledSegmentedControl!
+    
+    init(frame: CGRect = CGRect(), viewModel: TodoDetailsViewModel) {
+        self.viewModel = viewModel
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
         configureSubviews()
@@ -18,22 +22,28 @@ class TodoDetailsSegmentedControlWithLabel: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func setSelectedKey(_ key: Int) {
+        segmentedControl.selectedSegmentIndex = key
+    }
+    
     private func getSegmentedControl() -> UISegmentedControl {
         var config = UIImage.SymbolConfiguration(paletteColors: [AssetsColors.colorRed])
         config = config.applying(UIImage.SymbolConfiguration(weight: .bold))
-
+        
         let exclamation = UIImage(systemName: "exclamationmark.2", withConfiguration: config)!.withTintColor(AssetsColors.colorRed, renderingMode: .alwaysOriginal)
-                        
+        
         let items = [
             UIImage(systemName: "arrow.down")!.withTintColor(AssetsColors.colorGray, renderingMode: .alwaysOriginal),
             "no",
             exclamation] as [Any]
         
-        let segmentedControl = StyledSegmentedControl(items: items)
+        segmentedControl = StyledSegmentedControl(items: items)
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         segmentedControl.backgroundColor = AssetsColors.supportOverlay
         segmentedControl.accessibilityIgnoresInvertColors = true
         segmentedControl.selectedSegmentTintColor = AssetsColors.backElevated
+        
+        segmentedControl.addTarget(self, action: #selector(segmentedControlValueChanged), for: .valueChanged)
         
         return segmentedControl
     }
@@ -62,5 +72,25 @@ class TodoDetailsSegmentedControlWithLabel: UIView {
         label.topAnchor.constraint(equalTo: topAnchor).isActive = true
         label.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         segmentedControl.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+    }
+    
+    @objc private func segmentedControlValueChanged(_ view: UISegmentedControl) {
+        switch view.selectedSegmentIndex {
+        case 0:
+            if viewModel.importance != .low {
+                viewModel.onImportanceChanged(.low)
+            }
+            break
+        case 2:
+            if viewModel.importance != .important {
+                viewModel.onImportanceChanged(.important)
+            }
+            break
+        default:
+            if viewModel.importance != .basic {
+                viewModel.onImportanceChanged(.basic)
+            }
+            break
+        }
     }
 }

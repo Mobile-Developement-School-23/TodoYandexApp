@@ -7,25 +7,36 @@
 
 import UIKit
 
-class TodoDetailsViewController: UIViewController {
+class TodoDetailsViewController: UIViewController, TodoDetailsNavigationViewDelegate {
     private var scrollView: TodoDetailsScrollView!
-    private var textInputView = UIExpandingTextView()
-    private var fieldsStackView: VerticalStackLayoutView!
-    private let calendarView = UICalendarView()
-    private let deleteButton = TodoDetailsDeleteButton()
     private let navigationView = TodoDetailsNavigationView()
+    private let viewModel = TodoDetailsViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         hideKeyboardWhenTappedAround()
         
-        scrollView = TodoDetailsScrollView()
+        viewModel.mainHandler = self
+        
+        scrollView = TodoDetailsScrollView(viewModel: viewModel)
         setupView()
         
         scrollView.activateViewWithAnchors(top: view.layoutMarginsGuide.topAnchor, bottom: view.keyboardLayoutGuide.topAnchor, leading: view.layoutMarginsGuide.leadingAnchor, trailing: view.layoutMarginsGuide.trailingAnchor)
         
         view.addSubview(navigationView)
         navigationView.activateViewWithAnchors(top: view.topAnchor, leading: view.layoutMarginsGuide.leadingAnchor, trailing: view.layoutMarginsGuide.trailingAnchor)
+        navigationView.delegate = self
+        
+        viewModel.loadTodoItem()
+    }
+    
+    func closeButtonClicked() {
+        dismiss(animated: true)
+    }
+    
+    func saveButtonClicked() {
+        viewModel.saveChanges()
+        closeButtonClicked()
     }
     
     private func setupView() {
@@ -44,5 +55,15 @@ class TodoDetailsViewController: UIViewController {
         
         navigationItem.leftBarButtonItem = leftItem
         navigationItem.rightBarButtonItem = rightItem
+    }
+}
+
+extension TodoDetailsViewController: TodoDetailsViewModelMainHandler {
+    func onFileSaveError() {
+        print("OOPS, FILE NOT SAVED")
+    }
+    
+    func onTodoItemDeleted() {
+        closeButtonClicked()
     }
 }

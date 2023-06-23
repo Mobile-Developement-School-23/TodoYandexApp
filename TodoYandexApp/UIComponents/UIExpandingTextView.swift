@@ -9,8 +9,8 @@ import UIKit
 
 ///Has placeholder and autoexpanding features
 open class UIExpandingTextView: UITextView, UITextViewDelegate {
-    private var isEditing = false
-    private var isEdited = false
+    public private(set) var isEditing = false
+    public private(set) var isEdited = false
     private var textDidChangeHandlers = [UUID: (UITextView) -> Void]()
     
     ///Placeholder text color
@@ -83,18 +83,18 @@ open class UIExpandingTextView: UITextView, UITextViewDelegate {
         textDidChangeHandlers.removeValue(forKey: id)
     }
     
+    public func removePlaceholder() {
+        if !isEdited {
+            textColor = defaultTextColor
+            text = ""
+        }
+    }
+    
     private func updatePlaceholder() {
         if text.isEmpty || !isEdited {
             isEdited = false
             text = placeholder
             textColor = placeholderColor
-        }
-    }
-    
-    private func removePlaceholder() {
-        if !isEdited {
-            textColor = defaultTextColor
-            text = ""
         }
     }
     

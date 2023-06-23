@@ -7,13 +7,21 @@
 
 import UIKit
 
-class TodoDetailsStackView: UIStackView, DeactevatedView, TodoDetailsCalendarSwitchDeleate {
+class TodoDetailsStackView: UIStackView, DeactivatedView {
     private var fieldsStackView: VerticalStackLayoutView!
     private var calendarSwitch: TodoDetailsCalendarSwitch!
+    private var textView: TodoDetailsTextInputView!
+    private var importance: TodoDetailsSegmentedControlWithLabel!
     private let calendarView = UICalendarView()
+    private let viewModel: TodoDetailsViewModel
+    private var dateSelection: UICalendarSelectionSingleDate!
+    private var isCalendarViewShowed = false
+    private var deleteButton: TodoDetailsDeleteButton!
     
-    override init(frame: CGRect = CGRect()) {
+    init(frame: CGRect = CGRect(), viewModel: TodoDetailsViewModel) {
+        self.viewModel = viewModel
         super.init(frame: frame)
+        
         axis = NSLayoutConstraint.Axis.vertical
         distribution = UIStackView.Distribution.equalSpacing
         alignment = UIStackView.Alignment.center
@@ -42,13 +50,18 @@ class TodoDetailsStackView: UIStackView, DeactevatedView, TodoDetailsCalendarSwi
     }
     
     private func configureSubviews() {
-        let textView = TodoDetailsTextInputView()
+        textView = TodoDetailsTextInputView()
+        _ = textView.addTextDidChangeHandler(textValueChanged(_:))
+        
         addSubview(textView)
         addArrangedSubview(textView)
         textView.activateViewWithAnchors(width: widthAnchor)
         
-        let importance = TodoDetailsSegmentedControlWithLabel()
-        calendarSwitch = TodoDetailsCalendarSwitch()
+        importance = TodoDetailsSegmentedControlWithLabel(viewModel: viewModel)
+        calendarSwitch = TodoDetailsCalendarSwitch(viewModel: viewModel)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(switchCalendarShowStatus(sender:)))
+        calendarSwitch.addGestureRecognizer(tap)
+        calendarSwitch.switchDelegate = self
         fieldsStackView = VerticalStackLayoutView()
             .setPadding(LayoutValues.padding)
             .setSeparatorColor(AssetsColors.supportSeparator)
@@ -60,21 +73,94 @@ class TodoDetailsStackView: UIStackView, DeactevatedView, TodoDetailsCalendarSwi
         
         addArrangedSubview(fieldsStackView)
         addSubview(fieldsStackView)
-        calendarSwitch.switchDelegate = self
         
         fieldsStackView.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
         
-        let deleteButton = TodoDetailsDeleteButton()
+        deleteButton = TodoDetailsDeleteButton()
+        deleteButton.addTarget(self, action: #selector(onDeleteButtonClicked), for: .touchDown)
         addArrangedSubview(deleteButton)
         addSubview(deleteButton)
         deleteButton.activateViewWithAnchors(width: widthAnchor)
+        
+        setupCalendarDelegates()
+        viewModel.addDelegate(onViewModelChanged)
     }
     
-    func onValueChanged(value: Bool) {
-        if value {
+    @objc private func switchCalendarShowStatus(sender: UITapGestureRecognizer) {
+        guard viewModel.deadline != nil else {
+            return
+        }
+        isCalendarViewShowed = !isCalendarViewShowed
+        if isCalendarViewShowed {
             _ = fieldsStackView.addSeparatedSubview(calendarView, animated: true)
         } else {
             _ = fieldsStackView.removeSeparatedSubview(calendarView, animated: true)
         }
+    }
+    
+    @objc private func onDeleteButtonClicked() {
+        viewModel.deleteTodoItem()
+    }
+    
+    private func setupCalendarDelegates() {
+        dateSelection = UICalendarSelectionSingleDate(delegate: self)
+        calendarView.selectionBehavior = dateSelection
+        
+    }
+    
+    private func textValueChanged(_ view: UITextView) {
+        viewModel.onTextChanged(view.text)
+    }
+}
+
+extension TodoDetailsStackView: UICalendarSelectionSingleDateDelegate, TodoDetailsCalendarSwitchDelegate {
+    func dateSelection(_ selection: UICalendarSelectionSingleDate, didSelectDate dateComponents: DateComponents?) {
+        guard let dateComponents = dateComponents else {
+            return
+        }
+        
+        viewModel.onDateChanged(dateComponents.date)
+    }
+    
+    func onValueChanged(value: Bool) {
+        if value {
+            if !isCalendarViewShowed {
+                _ = fieldsStackView.addSeparatedSubview(calendarView, animated: true)
+                isCalendarViewShowed = true
+            }
+            if viewModel.deadline == nil {
+                viewModel.onDateChanged(Date.now.addingTimeInterval(86400))
+            }
+        } else {
+            if isCalendarViewShowed {
+                _ = fieldsStackView.removeSeparatedSubview(calendarView, animated: true)
+                isCalendarViewShowed = false
+            }
+            viewModel.onDateChanged(nil)
+        }
+    }
+}
+
+extension TodoDetailsStackView {
+    func onViewModelChanged() {
+        if textView.text != viewModel.text && (viewModel.text != "" || textView.isEdited) {
+            textView.removePlaceholder()
+            textView.text = viewModel.text
+        }
+        if viewModel.importance == .low {
+            importance.setSelectedKey(0)
+        } else if viewModel.importance == .important {
+            importance.setSelectedKey(2)
+        } else {
+            importance.setSelectedKey(1)
+        }
+        if dateSelection.selectedDate?.date != viewModel.deadline && viewModel.deadline != nil {
+            dateSelection.setSelected(Calendar.current.dateComponents([.day, .month, .year], from: viewModel.deadline!), animated: true)
+        }
+        if viewModel.deadline != nil {
+            calendarSwitch.setDateValueText()
+            calendarSwitch.setValue(true)
+        }
+        deleteButton.isEnabled = viewModel.isSaved
     }
 }
