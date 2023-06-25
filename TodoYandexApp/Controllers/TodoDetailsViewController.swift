@@ -10,7 +10,7 @@ import UIKit
 class TodoDetailsViewController: UIViewController, TodoDetailsNavigationViewDelegate {
     private var scrollView: TodoDetailsScrollView!
     private let navigationView = TodoDetailsNavigationView()
-    private let viewModel = TodoDetailsViewModel()
+    private var viewModel = TodoDetailsViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()

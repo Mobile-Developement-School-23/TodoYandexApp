@@ -8,10 +8,10 @@
 import UIKit
 
 class TodoDetailsSegmentedControlWithLabel: UIView {
-    private let viewModel: TodoDetailsViewModel
+    private weak var viewModel: TodoDetailsViewModel?
     private var segmentedControl: StyledSegmentedControl!
     
-    init(frame: CGRect = CGRect(), viewModel: TodoDetailsViewModel) {
+    init(frame: CGRect = CGRect(), viewModel: TodoDetailsViewModel?) {
         self.viewModel = viewModel
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
@@ -75,6 +75,10 @@ class TodoDetailsSegmentedControlWithLabel: UIView {
     }
     
     @objc private func segmentedControlValueChanged(_ view: UISegmentedControl) {
+        guard let viewModel = viewModel else {
+            return
+        }
+        
         switch view.selectedSegmentIndex {
         case 0:
             if viewModel.importance != .low {

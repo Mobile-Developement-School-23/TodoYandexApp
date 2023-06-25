@@ -13,7 +13,7 @@ class TodoDetailsStackView: UIStackView, DeactivatedView {
     private var textView: TodoDetailsTextInputView!
     private var importance: TodoDetailsSegmentedControlWithLabel!
     private let calendarView = UICalendarView()
-    private let viewModel: TodoDetailsViewModel
+    private weak var viewModel: TodoDetailsViewModel?
     private var dateSelection: UICalendarSelectionSingleDate!
     private var isCalendarViewShowed = false
     private var deleteButton: TodoDetailsDeleteButton!
@@ -60,7 +60,8 @@ class TodoDetailsStackView: UIStackView, DeactivatedView {
         configureDeleteButton()
         
         setupCalendarDelegates()
-        viewModel.addDelegate(onViewModelChanged)
+        
+        viewModel?.addDelegate(onViewModelChanged)
     }
     
     private func configureTextView() {
@@ -73,6 +74,9 @@ class TodoDetailsStackView: UIStackView, DeactivatedView {
     }
     
     private func configureFieldsStackView() {
+        guard let viewModel = viewModel else {
+            return
+        }
         importance = TodoDetailsSegmentedControlWithLabel(viewModel: viewModel)
         calendarSwitch = TodoDetailsCalendarSwitch(viewModel: viewModel)
         let tap = UITapGestureRecognizer(target: self, action: #selector(switchCalendarShowStatus(sender:)))
@@ -103,7 +107,7 @@ class TodoDetailsStackView: UIStackView, DeactivatedView {
     }
     
     @objc private func switchCalendarShowStatus(sender: UITapGestureRecognizer) {
-        guard viewModel.deadline != nil else {
+        guard viewModel?.deadline != nil else {
             return
         }
         isCalendarViewShowed = !isCalendarViewShowed
@@ -115,13 +119,17 @@ class TodoDetailsStackView: UIStackView, DeactivatedView {
     }
     
     @objc private func onDeleteButtonClicked() {
-        viewModel.deleteTodoItem()
+        viewModel?.deleteTodoItem()
     }
     
     private func addColorLabel() {
         colorLabel = UILabel()
         addArrangedSubview(colorLabel)
         addSubview(colorLabel)
+        
+        guard let viewModel = viewModel else {
+            return
+        }
         colorLabel.text = "Цвет: " + (viewModel.color?.htmlRGBColor ?? AssetsColors.labelPrimary.htmlRGBColor)
         colorLabel.textColor = viewModel.color ?? AssetsColors.labelPrimary
         colorLabel.font = AssetsFonts.body
@@ -135,7 +143,7 @@ class TodoDetailsStackView: UIStackView, DeactivatedView {
     }
     
     private func textValueChanged(_ view: UITextView) {
-        viewModel.onTextChanged(view.text)
+        viewModel?.onTextChanged(view.text)
     }
 }
 
@@ -145,10 +153,13 @@ extension TodoDetailsStackView: UICalendarSelectionSingleDateDelegate, TodoDetai
             return
         }
         
-        viewModel.onDateChanged(dateComponents.date)
+        viewModel?.onDateChanged(dateComponents.date)
     }
     
     func onValueChanged(value: Bool) {
+        guard let viewModel = viewModel else {
+            return
+        }
         if value {
             if !isCalendarViewShowed {
                 _ = fieldsStackView.addSeparatedSubview(calendarView, animated: true)
@@ -169,6 +180,9 @@ extension TodoDetailsStackView: UICalendarSelectionSingleDateDelegate, TodoDetai
 
 extension TodoDetailsStackView {
     func onViewModelChanged() {
+        guard let viewModel = viewModel else {
+            return
+        }
         if textView.text != viewModel.text && (viewModel.text != "" || textView.isEdited) {
             textView.removePlaceholder()
             if viewModel.text != "" {
@@ -208,8 +222,8 @@ extension TodoDetailsStackView {
         
         if (colorLabel.isHidden && viewModel.color != nil) || (viewModel.color == nil && !colorLabel.isHidden) {
             UIView.transition(with: self, duration: 0.25, options: [.transitionCrossDissolve], animations: {
-                self.colorLabel.isHidden = self.viewModel.color == nil
-                self.colorLabel.alpha = self.viewModel.color == nil ? 0 : 1
+                self.colorLabel.isHidden = self.viewModel?.color == nil
+                self.colorLabel.alpha = self.viewModel?.color == nil ? 0 : 1
             }, completion: nil)
         }
     }

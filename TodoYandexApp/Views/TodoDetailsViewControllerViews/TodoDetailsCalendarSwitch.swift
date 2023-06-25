@@ -12,9 +12,9 @@ class TodoDetailsCalendarSwitch: UIView {
     private let dateLabel = UILabel()
     private var switchControl: UISwitch!
     var switchDelegate: TodoDetailsCalendarSwitchDelegate?
-    var viewModel: TodoDetailsViewModel
+    private weak var viewModel: TodoDetailsViewModel?
     
-    init(frame: CGRect = CGRect(), viewModel: TodoDetailsViewModel) {
+    init(frame: CGRect = CGRect(), viewModel: TodoDetailsViewModel?) {
         self.viewModel = viewModel
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
@@ -26,6 +26,9 @@ class TodoDetailsCalendarSwitch: UIView {
     }
     
     func setDateValueText() {
+        guard let viewModel = viewModel else {
+            return
+        }
         if viewModel.deadline != nil {
             let dateFormatter = DateFormatter()
             dateFormatter.dateStyle = .medium
