@@ -53,13 +53,26 @@ class TodoDetailsStackView: UIStackView, DeactivatedView {
     private func configureSubviews() {
         addColorLabel()
         
+        configureTextView()
+        
+        configureFieldsStackView()
+        
+        configureDeleteButton()
+        
+        setupCalendarDelegates()
+        viewModel.addDelegate(onViewModelChanged)
+    }
+    
+    private func configureTextView() {
         textView = TodoDetailsTextInputView()
         _ = textView.addTextDidChangeHandler(textValueChanged(_:))
         
         addSubview(textView)
         addArrangedSubview(textView)
         textView.activateViewWithAnchors(width: widthAnchor)
-        
+    }
+    
+    private func configureFieldsStackView() {
         importance = TodoDetailsSegmentedControlWithLabel(viewModel: viewModel)
         calendarSwitch = TodoDetailsCalendarSwitch(viewModel: viewModel)
         let tap = UITapGestureRecognizer(target: self, action: #selector(switchCalendarShowStatus(sender:)))
@@ -79,15 +92,14 @@ class TodoDetailsStackView: UIStackView, DeactivatedView {
         addSubview(fieldsStackView)
         
         fieldsStackView.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
-        
+    }
+    
+    private func configureDeleteButton() {
         deleteButton = TodoDetailsDeleteButton()
         deleteButton.addTarget(self, action: #selector(onDeleteButtonClicked), for: .touchDown)
         addArrangedSubview(deleteButton)
         addSubview(deleteButton)
         deleteButton.activateViewWithAnchors(width: widthAnchor)
-        
-        setupCalendarDelegates()
-        viewModel.addDelegate(onViewModelChanged)
     }
     
     @objc private func switchCalendarShowStatus(sender: UITapGestureRecognizer) {
@@ -159,6 +171,9 @@ extension TodoDetailsStackView {
     func onViewModelChanged() {
         if textView.text != viewModel.text && (viewModel.text != "" || textView.isEdited) {
             textView.removePlaceholder()
+            if viewModel.text != "" {
+                textView.isEdited = true
+            }
             textView.text = viewModel.text
         }
         if viewModel.importance == .low {
@@ -177,9 +192,18 @@ extension TodoDetailsStackView {
         }
         deleteButton.isEnabled = viewModel.isSaved
         
-        textView.textColor = viewModel.color ?? textView.textColor
+        let color = viewModel.color ?? AssetsColors.labelPrimary
+        if viewModel.text != "" && textView.defaultTextColor != color {
+            let font = textView.font
+            let attrText = NSAttributedString(string: viewModel.text)
+            textView.attributedText = attrText
+            textView.font = font
+            textView.defaultTextColor = color
+            textView.isEdited = true
+            textView.text = viewModel.text
+        }
         
-        colorLabel.text = "Цвет: " + (viewModel.color?.htmlRGBColor ?? AssetsColors.labelPrimary.htmlRGBColor)
+        colorLabel.text = "Цвет: " + (color.htmlRGBColor)
         colorLabel.textColor = viewModel.color ?? AssetsColors.labelPrimary
         
         if (colorLabel.isHidden && viewModel.color != nil) || (viewModel.color == nil && !colorLabel.isHidden) {

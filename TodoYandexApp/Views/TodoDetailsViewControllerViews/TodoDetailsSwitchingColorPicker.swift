@@ -66,7 +66,7 @@ class TodoDetailsSwitchingColorPicker: UIStackView {
             self.gradientView.isHidden = !self.switchControl.isOn
             self.gradientView.alpha = !self.switchControl.isOn ? 0 : 1
             self.brightnessSlider.alpha = !self.switchControl.isOn ? 0 : 1
-        }, completion: nil)
+        }, completion: {_ in self.sliderValueChanged()})
         if !switchControl.isOn {
             viewModel.onColorChanged(nil)
         }

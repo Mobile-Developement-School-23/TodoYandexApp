@@ -10,7 +10,7 @@ import UIKit
 ///Has placeholder and autoexpanding features
 open class UIExpandingTextView: UITextView, UITextViewDelegate {
     public private(set) var isEditing = false
-    public private(set) var isEdited = false
+    public var isEdited = false
     private var textDidChangeHandlers = [UUID: (UITextView) -> Void]()
     
     ///Placeholder text color
@@ -25,6 +25,7 @@ open class UIExpandingTextView: UITextView, UITextViewDelegate {
     ///Aka textColor
     public var defaultTextColor = UIColor.black {
         didSet {
+            textColor = defaultTextColor
             if !isEditing {
                 updatePlaceholder()
             }
