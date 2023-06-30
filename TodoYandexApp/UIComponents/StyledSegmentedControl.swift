@@ -13,12 +13,12 @@ open class StyledSegmentedControl: UISegmentedControl {
         guard let items = items else {
             return
         }
-        
-        for i in 0..<items.count {
-            setWidth(50, forSegmentAt: i)
+
+        for ind in 0..<items.count {
+            setWidth(50, forSegmentAt: ind)
         }
     }
-    
+
     public required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

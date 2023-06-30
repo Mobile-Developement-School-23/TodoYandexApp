@@ -14,7 +14,8 @@ extension UIView {
 
         var pixelData: [UInt8] = [0, 0, 0, 0]
 
-        let context = CGContext(data: &pixelData, width: 1, height: 1, bitsPerComponent: 8, bytesPerRow: 4, space: colorSpace, bitmapInfo: bitmapInfo.rawValue)
+        let context = CGContext(data: &pixelData, width: 1, height: 1, bitsPerComponent: 8, bytesPerRow: 4,
+                                space: colorSpace, bitmapInfo: bitmapInfo.rawValue)
 
         context!.translateBy(x: -point.x, y: -point.y)
 
