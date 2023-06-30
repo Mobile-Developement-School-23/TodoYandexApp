@@ -28,6 +28,9 @@ class TodoDetailsStackView: UIStackView, DeactivatedView {
         alignment = UIStackView.Alignment.center
         spacing = LayoutValues.spacing
         translatesAutoresizingMaskIntoConstraints = false
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: UIResponder.keyboardWillHideNotification, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear), name: UIResponder.keyboardWillShowNotification, object: nil)
+
         configureSubviews()
     }
     
@@ -122,6 +125,41 @@ class TodoDetailsStackView: UIStackView, DeactivatedView {
         viewModel?.deleteTodoItem()
     }
     
+    
+    @objc private func keyboardWillAppear() {
+        UIView.animate(withDuration: 0.2, animations: {
+            self.fieldsStackView.isHidden = true
+            self.calendarSwitch.isHidden = true
+            self.importance.isHidden = true
+            self.calendarView.isHidden = true
+            self.deleteButton.isHidden = true
+            self.colorLabel.isHidden = true
+            self.fieldsStackView.alpha = 0
+            self.calendarSwitch.alpha = 0
+            self.importance.alpha = 0
+            self.calendarView.alpha = 0
+            self.deleteButton.alpha = 0
+            self.colorLabel.alpha = 0
+        })
+    }
+
+    @objc private func keyboardWillDisappear() {
+        UIView.animate(withDuration: 0.2, animations: {
+            self.fieldsStackView.isHidden = false
+            self.calendarSwitch.isHidden = false
+            self.importance.isHidden = false
+            self.calendarView.isHidden = false
+            self.deleteButton.isHidden = false
+            self.colorLabel.isHidden = false
+            self.fieldsStackView.alpha = 1
+            self.calendarSwitch.alpha = 1
+            self.importance.alpha = 1
+            self.calendarView.alpha = 1
+            self.deleteButton.alpha = 1
+            self.colorLabel.alpha = 1
+        })
+    }
+    
     private func addColorLabel() {
         colorLabel = UILabel()
         addArrangedSubview(colorLabel)
@@ -144,6 +182,10 @@ class TodoDetailsStackView: UIStackView, DeactivatedView {
     
     private func textValueChanged(_ view: UITextView) {
         viewModel?.onTextChanged(view.text)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 }
 

@@ -8,15 +8,19 @@
 import UIKit
 
 class TodoDetailsViewController: UIViewController, TodoDetailsNavigationViewDelegate {
+    typealias TodoDelegate = (TodoItem) -> Void
+    
     private var scrollView: TodoDetailsScrollView!
     private let navigationView = TodoDetailsNavigationView()
     private var viewModel = TodoDetailsViewModel()
+    private var saved: TodoDelegate?
+    private var deleted: TodoDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         hideKeyboardWhenTappedAround()
         
-        viewModel.mainHandler = self
+        viewModel.controller = self
         
         scrollView = TodoDetailsScrollView(viewModel: viewModel)
         setupView()
@@ -26,8 +30,12 @@ class TodoDetailsViewController: UIViewController, TodoDetailsNavigationViewDele
         view.addSubview(navigationView)
         navigationView.activateViewWithAnchors(top: view.topAnchor, leading: view.layoutMarginsGuide.leadingAnchor, trailing: view.layoutMarginsGuide.trailingAnchor)
         navigationView.delegate = self
-        
-        viewModel.loadTodoItem()
+    }
+    
+    override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
+        super.dismiss(animated: flag, completion: completion)
+        saved = nil
+        deleted = nil
     }
     
     func closeButtonClicked() {
@@ -36,8 +44,23 @@ class TodoDetailsViewController: UIViewController, TodoDetailsNavigationViewDele
     
     func saveButtonClicked() {
         viewModel.saveChanges()
+        guard let saved = saved else {
+            closeButtonClicked()
+            return
+        }
+        saved(viewModel.makeTodoItem())
         closeButtonClicked()
     }
+    
+    func setTodoItem(_ item: TodoItem?) {
+        viewModel.setItem(item)
+    }
+    
+    func setCallbacks(saved: @escaping (TodoItem) -> Void, deleted: @escaping (TodoItem) -> Void) {
+        self.saved = saved
+        self.deleted = deleted
+    }
+
     
     private func setupView() {
         view.backgroundColor = AssetsColors.backPrimary
@@ -64,6 +87,11 @@ extension TodoDetailsViewController: TodoDetailsViewModelMainHandler {
     }
     
     func onTodoItemDeleted() {
+        guard let deleted = deleted else {
+            closeButtonClicked()
+            return
+        }
+        deleted(viewModel.makeTodoItem())
         closeButtonClicked()
     }
 }

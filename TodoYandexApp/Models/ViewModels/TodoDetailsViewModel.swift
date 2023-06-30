@@ -9,7 +9,6 @@ import UIKit
 
 class TodoDetailsViewModel {
     private let loadUrl: URL = URL.documentsDirectory.appending(component: "details.json")
-    private let fileCache = FileCache<TodoItem>()
     private var todoItem: TodoItem? = nil
     private var stringColor: String? = nil
     
@@ -21,31 +20,10 @@ class TodoDetailsViewModel {
     
     private var delegates = [() -> Void]()
     
-    public var mainHandler: TodoDetailsViewModelMainHandler?
+    public weak var controller: TodoDetailsViewController?
     
-    func saveChanges() {
-        guard let todoItem = todoItem else {
-            self.todoItem = TodoItem(text: text, importance: importance, deadline: deadline, color: stringColor)
-            saveItemAsJson(self.todoItem!)
-            return
-        }
-        
-        self.todoItem = TodoItem(id: todoItem.id, text: text, importance: importance, deadline: deadline, done: todoItem.done, createdAt: todoItem.createdAt, changedAt: Date.now, color: stringColor)
-        saveItemAsJson(self.todoItem!)
-    }
-    
-    private func saveItemAsJson(_ item: TodoItem) {
-        fileCache.set(item: item)
-        do {
-            try fileCache.saveAsJsonFile(withURL: loadUrl)
-        } catch {
-            mainHandler?.onFileSaveError()
-        }
-    }
-    
-    func loadTodoItem() {
-        try? fileCache.loadFromJsonFile(withURL: loadUrl)
-        todoItem = fileCache.itemsById.values.first
+    func setItem(_ item: TodoItem?) {
+        todoItem = item
         isSaved = todoItem != nil
         text = todoItem?.text ?? ""
         deadline = todoItem?.deadline
@@ -58,18 +36,12 @@ class TodoDetailsViewModel {
         notifyDelegates()
     }
     
+    func saveChanges() {
+        self.todoItem = makeTodoItem()
+    }
+    
     func deleteTodoItem() {
-        guard todoItem != nil else {
-            return
-        }
-        
-        fileCache.remove(item: todoItem!)
-        do {
-            try fileCache.saveAsJsonFile(withURL: loadUrl)
-            mainHandler?.onTodoItemDeleted()
-        } catch {
-            mainHandler?.onFileSaveError()
-        }
+        controller?.onTodoItemDeleted()
     }
     
     func onTextChanged(_ text: String) {
@@ -106,6 +78,16 @@ class TodoDetailsViewModel {
     
     func addDelegate(_ delegate: @escaping () -> Void) {
         delegates.append(delegate)
+    }
+    
+    func makeTodoItem() -> TodoItem {
+        guard let todoItem = todoItem else {
+            let item = TodoItem(text: text, importance: importance, deadline: deadline, color: stringColor)
+            return item
+        }
+        
+        let item = TodoItem(id: todoItem.id, text: text, importance: importance, deadline: deadline, done: todoItem.done, createdAt: todoItem.createdAt, changedAt: Date.now, color: stringColor)
+        return item
     }
 }
 
