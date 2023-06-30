@@ -27,15 +27,10 @@ class TodoDetailsSegmentedControlWithLabel: UIView {
     }
     
     private func getSegmentedControl() -> UISegmentedControl {
-        var config = UIImage.SymbolConfiguration(paletteColors: [AssetsColors.colorRed])
-        config = config.applying(UIImage.SymbolConfiguration(weight: .bold))
-        
-        let exclamation = UIImage(systemName: "exclamationmark.2", withConfiguration: config)!.withTintColor(AssetsColors.colorRed, renderingMode: .alwaysOriginal)
-        
         let items = [
-            UIImage(systemName: "arrow.down")!.withTintColor(AssetsColors.colorGray, renderingMode: .alwaysOriginal),
+            AssetsImages.arrowDownImage,
             "нет",
-            exclamation] as [Any]
+            AssetsImages.exclamationImage] as [Any]
         
         segmentedControl = StyledSegmentedControl(items: items)
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
