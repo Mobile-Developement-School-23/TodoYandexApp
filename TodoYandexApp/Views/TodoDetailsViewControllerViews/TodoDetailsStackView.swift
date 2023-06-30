@@ -18,32 +18,37 @@ class TodoDetailsStackView: UIStackView, DeactivatedView {
     private var isCalendarViewShowed = false
     private var deleteButton: TodoDetailsDeleteButton!
     private var colorLabel: UILabel!
-    
+
     init(frame: CGRect = CGRect(), viewModel: TodoDetailsViewModel) {
         self.viewModel = viewModel
         super.init(frame: frame)
-        
+
         axis = NSLayoutConstraint.Axis.vertical
         distribution = UIStackView.Distribution.equalSpacing
         alignment = UIStackView.Alignment.center
         spacing = LayoutValues.spacing
         translatesAutoresizingMaskIntoConstraints = false
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: UIResponder.keyboardWillHideNotification, object: nil)
-            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear),
+                                               name: UIResponder.keyboardWillHideNotification, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear),
+                                                   name: UIResponder.keyboardWillShowNotification, object: nil)
 
         configureSubviews()
     }
-    
+
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    func activateViewWithAnchors(top: NSLayoutYAxisAnchor?, bottom: NSLayoutYAxisAnchor?, leading: NSLayoutXAxisAnchor?, trailing: NSLayoutXAxisAnchor?, width: NSLayoutDimension?, height: NSLayoutDimension? = nil, centerX: NSLayoutXAxisAnchor? = nil, centerY: NSLayoutYAxisAnchor? = nil) {
-        
+
+    func activateViewWithAnchors(top: NSLayoutYAxisAnchor?, bottom: NSLayoutYAxisAnchor?,
+                                 leading: NSLayoutXAxisAnchor?, trailing: NSLayoutXAxisAnchor?,
+                                 width: NSLayoutDimension?, height: NSLayoutDimension? = nil,
+                                 centerX: NSLayoutXAxisAnchor? = nil, centerY: NSLayoutYAxisAnchor? = nil) {
+
         guard let top = top, let bot = bottom, let leading = leading, let trailing = trailing, let width = width else {
             return
         }
-        
+
         NSLayoutConstraint.activate([
             topAnchor.constraint(equalTo: top),
             leadingAnchor.constraint(equalTo: leading),
@@ -52,30 +57,30 @@ class TodoDetailsStackView: UIStackView, DeactivatedView {
             widthAnchor.constraint(equalTo: width)
         ])
     }
-    
+
     private func configureSubviews() {
         addColorLabel()
-        
+
         configureTextView()
-        
+
         configureFieldsStackView()
-        
+
         configureDeleteButton()
-        
+
         setupCalendarDelegates()
-        
+
         viewModel?.addDelegate(onViewModelChanged)
     }
-    
+
     private func configureTextView() {
         textView = TodoDetailsTextInputView()
         _ = textView.addTextDidChangeHandler(textValueChanged(_:))
-        
+
         addSubview(textView)
         addArrangedSubview(textView)
         textView.activateViewWithAnchors(width: widthAnchor)
     }
-    
+
     private func configureFieldsStackView() {
         guard let viewModel = viewModel else {
             return
@@ -94,13 +99,13 @@ class TodoDetailsStackView: UIStackView, DeactivatedView {
             .addSeparatedSubview(TodoDetailsSwitchingColorPicker(viewModel: viewModel))
             .addSeparatedSubview(calendarSwitch)
             .setRadius(LayoutValues.cornerRadius)
-        
+
         addArrangedSubview(fieldsStackView)
         addSubview(fieldsStackView)
-        
+
         fieldsStackView.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
     }
-    
+
     private func configureDeleteButton() {
         deleteButton = TodoDetailsDeleteButton()
         deleteButton.addTarget(self, action: #selector(onDeleteButtonClicked), for: .touchDown)
@@ -108,7 +113,7 @@ class TodoDetailsStackView: UIStackView, DeactivatedView {
         addSubview(deleteButton)
         deleteButton.activateViewWithAnchors(width: widthAnchor)
     }
-    
+
     @objc private func switchCalendarShowStatus(sender: UITapGestureRecognizer) {
         guard viewModel?.deadline != nil else {
             return
@@ -120,12 +125,11 @@ class TodoDetailsStackView: UIStackView, DeactivatedView {
             _ = fieldsStackView.removeSeparatedSubview(calendarView, animated: true)
         }
     }
-    
+
     @objc private func onDeleteButtonClicked() {
         viewModel?.deleteTodoItem()
     }
-    
-    
+
     @objc private func keyboardWillAppear() {
         UIView.animate(withDuration: 0.2, animations: {
             self.fieldsStackView.isHidden = true
@@ -159,12 +163,12 @@ class TodoDetailsStackView: UIStackView, DeactivatedView {
             self.colorLabel.alpha = 1
         })
     }
-    
+
     private func addColorLabel() {
         colorLabel = UILabel()
         addArrangedSubview(colorLabel)
         addSubview(colorLabel)
-        
+
         guard let viewModel = viewModel else {
             return
         }
@@ -173,17 +177,17 @@ class TodoDetailsStackView: UIStackView, DeactivatedView {
         colorLabel.font = AssetsFonts.body
         colorLabel.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
     }
-    
+
     private func setupCalendarDelegates() {
         dateSelection = UICalendarSelectionSingleDate(delegate: self)
         calendarView.selectionBehavior = dateSelection
-        
+
     }
-    
+
     private func textValueChanged(_ view: UITextView) {
         viewModel?.onTextChanged(view.text)
     }
-    
+
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
@@ -194,10 +198,10 @@ extension TodoDetailsStackView: UICalendarSelectionSingleDateDelegate, TodoDetai
         guard let dateComponents = dateComponents else {
             return
         }
-        
+
         viewModel?.onDateChanged(dateComponents.date)
     }
-    
+
     func onValueChanged(value: Bool) {
         guard let viewModel = viewModel else {
             return
@@ -240,14 +244,15 @@ extension TodoDetailsStackView {
             importance.setSelectedKey(1)
         }
         if dateSelection.selectedDate?.date != viewModel.deadline && viewModel.deadline != nil {
-            dateSelection.setSelected(Calendar.current.dateComponents([.day, .month, .year], from: viewModel.deadline!), animated: true)
+            dateSelection.setSelected(Calendar.current.dateComponents([.day, .month, .year],
+                                                                      from: viewModel.deadline!), animated: true)
         }
         if viewModel.deadline != nil {
             calendarSwitch.setDateValueText()
             calendarSwitch.setValue(true)
         }
         deleteButton.isEnabled = viewModel.isSaved
-        
+
         let color = viewModel.color ?? AssetsColors.labelPrimary
         if viewModel.text != "" && textView.defaultTextColor != color {
             let font = textView.font
@@ -258,10 +263,10 @@ extension TodoDetailsStackView {
             textView.isEdited = true
             textView.text = viewModel.text
         }
-        
+
         colorLabel.text = "Цвет: " + (color.htmlRGBColor)
         colorLabel.textColor = viewModel.color ?? AssetsColors.labelPrimary
-        
+
         if (colorLabel.isHidden && viewModel.color != nil) || (viewModel.color == nil && !colorLabel.isHidden) {
             UIView.transition(with: self, duration: 0.25, options: [.transitionCrossDissolve], animations: {
                 self.colorLabel.isHidden = self.viewModel?.color == nil

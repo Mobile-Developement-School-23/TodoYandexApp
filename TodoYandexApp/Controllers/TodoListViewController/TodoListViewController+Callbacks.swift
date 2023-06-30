@@ -14,23 +14,23 @@ extension TodoListViewController {
         details.setTodoItem(nil)
         details.setCallbacks(saved: onDetailedTodoItemChanged, deleted: onDetailedTodoItemDeleted)
     }
-    
+
     func onDetailedTodoItemChanged(item: TodoItem) {
         fileCache.set(item: item)
         try? fileCache.saveAsJsonFile(withURL: ModelValues.todosUrl)
         onItemsChanged()
     }
-    
+
     func onDetailedTodoItemDeleted(item: TodoItem) {
         fileCache.remove(item: item)
         try? fileCache.saveAsJsonFile(withURL: ModelValues.todosUrl)
         onItemsChanged()
     }
-    
+
     func onCompletedSwitchClicked(_ isOn: Bool) {
         reloadData()
     }
-    
+
     func onItemsChanged() {
         reloadData()
     }

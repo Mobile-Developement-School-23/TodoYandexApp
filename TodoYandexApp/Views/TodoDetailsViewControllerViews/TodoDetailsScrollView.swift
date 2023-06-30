@@ -9,7 +9,7 @@ import UIKit
 
 class TodoDetailsScrollView: UIScrollView, DeactivatedView {
     private let viewModel: TodoDetailsViewModel
-    
+
     init(frame: CGRect = CGRect(), viewModel: TodoDetailsViewModel) {
         self.viewModel = viewModel
         super.init(frame: frame)
@@ -17,17 +17,20 @@ class TodoDetailsScrollView: UIScrollView, DeactivatedView {
         showsVerticalScrollIndicator = false
         configureSubviews()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    func activateViewWithAnchors(top: NSLayoutYAxisAnchor?, bottom: NSLayoutYAxisAnchor?, leading: NSLayoutXAxisAnchor?, trailing: NSLayoutXAxisAnchor?, width: NSLayoutDimension? = nil, height: NSLayoutDimension? = nil, centerX: NSLayoutXAxisAnchor? = nil, centerY: NSLayoutYAxisAnchor? = nil) {
-        
+
+    func activateViewWithAnchors(top: NSLayoutYAxisAnchor?, bottom: NSLayoutYAxisAnchor?,
+                                 leading: NSLayoutXAxisAnchor?, trailing: NSLayoutXAxisAnchor?,
+                                 width: NSLayoutDimension? = nil, height: NSLayoutDimension? = nil,
+                                 centerX: NSLayoutXAxisAnchor? = nil, centerY: NSLayoutYAxisAnchor? = nil) {
+
         guard let top = top, let bot = bottom, let leading = leading, let trailing = trailing else {
             return
         }
-        
+
         NSLayoutConstraint.activate([
             topAnchor.constraint(equalTo: top),
             leadingAnchor.constraint(equalTo: leading),
@@ -35,10 +38,11 @@ class TodoDetailsScrollView: UIScrollView, DeactivatedView {
             bottomAnchor.constraint(equalTo: bot)
         ])
     }
-    
+
     private func configureSubviews() {
         let stackView = TodoDetailsStackView(viewModel: viewModel)
         addSubview(stackView)
-        stackView.activateViewWithAnchors(top: topAnchor, bottom: bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor, width: widthAnchor)
+        stackView.activateViewWithAnchors(top: topAnchor, bottom: bottomAnchor, leading: leadingAnchor,
+                                          trailing: trailingAnchor, width: widthAnchor)
     }
 }

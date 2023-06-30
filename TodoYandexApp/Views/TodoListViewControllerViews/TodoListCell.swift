@@ -13,33 +13,34 @@ class TodoListCell: UITableViewCell {
     let checkbox = CircleCheckboxView()
     let label = UILabel()
     let date = UILabel()
-    
+
     var todoItem: TodoItem?
     var onTodoChanged: ((TodoItem) -> Void)?
-    
+
     override init(style: UITableViewCell.CellStyle = .default, reuseIdentifier: String? = nil) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         backgroundColor = UIColor.clear
         configureSubviews()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     func configureSubviews() {
         contentView.layoutMargins = LayoutValues.padding
         contentView.layoutMarginsDidChange()
         separatorInset = UIEdgeInsets(top: 0, left: 65, bottom: 0, right: 0)
         addStackView()
     }
-    
+
     func rerenderWith(item: TodoItem) {
         todoItem = item
-        
-        //Set label value
+
+        // Set label value
         if !item.done {
-            let prefix = item.importance == .important ? AssetsImages.exclamationImage : item.importance == .low ? AssetsImages.arrowDownImage : nil
+            let prefix = item.importance == .important ? AssetsImages.exclamationImage : item.importance == .low
+            ? AssetsImages.arrowDownImage : nil
             if prefix != nil {
                 let imageAttachment = NSTextAttachment()
                 imageAttachment.image = prefix!
@@ -57,15 +58,16 @@ class TodoListCell: UITableViewCell {
             }
         } else {
             let attributeString = NSMutableAttributedString(string: item.text)
-            attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSRange(location: 0, length: attributeString.length))
+            attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2,
+                                         range: NSRange(location: 0, length: attributeString.length))
             label.attributedText = attributeString
             label.textColor = AssetsColors.labelTertiary
         }
         label.font = AssetsFonts.body
-        
+
         checkbox.setIsOn(item.done)
         checkbox.setIsError(todoItem?.importance == .important)
-        
+
         if item.deadline != nil {
             let dateFormatter = DateFormatter()
             dateFormatter.dateStyle = .medium
@@ -81,16 +83,18 @@ class TodoListCell: UITableViewCell {
             date.isHidden = true
         }
     }
-    
+
     func onCheckboxValueChanged(_ isOn: Bool) {
         if todoItem == nil {
             return
         }
-        
-        todoItem = TodoItem(id: todoItem!.id, text: todoItem!.text, importance: todoItem!.importance, deadline: todoItem!.deadline, done: isOn, createdAt: todoItem!.createdAt, changedAt: todoItem!.changedAt, color: todoItem!.color)
+
+        todoItem = TodoItem(id: todoItem!.id, text: todoItem!.text, importance: todoItem!.importance,
+                            deadline: todoItem!.deadline, done: isOn, createdAt: todoItem!.createdAt,
+                            changedAt: todoItem!.changedAt, color: todoItem!.color)
         (onTodoChanged ?? {_ in })(todoItem!)
     }
-    
+
     private func addStackView() {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(stackView)
@@ -107,7 +111,7 @@ class TodoListCell: UITableViewCell {
         addCheckboxView()
         configureTextStackView()
     }
-    
+
     private func addCheckboxView() {
         checkbox.translatesAutoresizingMaskIntoConstraints = false
         checkbox.setIsOn(todoItem?.done ?? false)
@@ -120,7 +124,7 @@ class TodoListCell: UITableViewCell {
         checkbox.centerYAnchor.constraint(equalTo: stackView.centerYAnchor).isActive = true
         checkbox.widthAnchor.constraint(equalToConstant: 28).isActive = true
     }
-    
+
     private func configureTextStackView() {
         textStackView.translatesAutoresizingMaskIntoConstraints = true
         textStackView.autoresizingMask = [.flexibleWidth]
@@ -133,7 +137,7 @@ class TodoListCell: UITableViewCell {
         addLabel()
         addDate()
     }
-    
+
     private func addLabel() {
         textStackView.addArrangedSubview(label)
         textStackView.addSubview(label)
@@ -141,7 +145,7 @@ class TodoListCell: UITableViewCell {
         label.font = AssetsFonts.body
         label.textColor = AssetsColors.labelPrimary
     }
-    
+
     private func addDate() {
         textStackView.addArrangedSubview(date)
         textStackView.addSubview(date)

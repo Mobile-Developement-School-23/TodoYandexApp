@@ -6,7 +6,9 @@
 //
 
 import UIKit
+import CocoaLumberjackSwift
 
+// swiftlint:disable trailing_whitespace
 class TodoDetailsViewController: UIViewController, TodoDetailsNavigationViewDelegate {
     typealias TodoDelegate = (TodoItem) -> Void
     
@@ -18,6 +20,7 @@ class TodoDetailsViewController: UIViewController, TodoDetailsNavigationViewDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        DDLogDebug("Details controller loaded")
         hideKeyboardWhenTappedAround()
         
         viewModel.controller = self
@@ -25,10 +28,14 @@ class TodoDetailsViewController: UIViewController, TodoDetailsNavigationViewDele
         scrollView = TodoDetailsScrollView(viewModel: viewModel)
         setupView()
         
-        scrollView.activateViewWithAnchors(top: view.layoutMarginsGuide.topAnchor, bottom: view.keyboardLayoutGuide.topAnchor, leading: view.layoutMarginsGuide.leadingAnchor, trailing: view.layoutMarginsGuide.trailingAnchor)
+        scrollView.activateViewWithAnchors(top: view.layoutMarginsGuide.topAnchor,
+                                           bottom: view.keyboardLayoutGuide.topAnchor,
+                                           leading: view.layoutMarginsGuide.leadingAnchor,
+                                           trailing: view.layoutMarginsGuide.trailingAnchor)
         
         view.addSubview(navigationView)
-        navigationView.activateViewWithAnchors(top: view.topAnchor, leading: view.layoutMarginsGuide.leadingAnchor, trailing: view.layoutMarginsGuide.trailingAnchor)
+        navigationView.activateViewWithAnchors(top: view.topAnchor, leading: view.layoutMarginsGuide.leadingAnchor,
+                                               trailing: view.layoutMarginsGuide.trailingAnchor)
         navigationView.delegate = self
     }
     
@@ -36,6 +43,7 @@ class TodoDetailsViewController: UIViewController, TodoDetailsNavigationViewDele
         super.dismiss(animated: flag, completion: completion)
         saved = nil
         deleted = nil
+        DDLogDebug("Details controller dismissed")
     }
     
     func closeButtonClicked() {
@@ -61,7 +69,6 @@ class TodoDetailsViewController: UIViewController, TodoDetailsNavigationViewDele
         self.deleted = deleted
     }
 
-    
     private func setupView() {
         view.backgroundColor = AssetsColors.backPrimary
         view.layoutMargins = LayoutValues.padding
@@ -95,3 +102,4 @@ extension TodoDetailsViewController: TodoDetailsViewModelMainHandler {
         closeButtonClicked()
     }
 }
+// swiftlint:enable trailing_whitespace

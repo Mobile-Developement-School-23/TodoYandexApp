@@ -9,7 +9,7 @@ import UIKit
 
 open class VerticalStackLayoutView: UIStackView {
     private var separatorColor: UIColor = .black
-    
+
     override init(frame: CGRect = CGRect()) {
         super.init(frame: CGRect())
         isLayoutMarginsRelativeArrangement = false
@@ -17,16 +17,16 @@ open class VerticalStackLayoutView: UIStackView {
         distribution = UIStackView.Distribution.equalSpacing
         alignment = UIStackView.Alignment.center
     }
-    
+
     public required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     public func withBackgroundColor(_ color: UIColor) -> Self {
         backgroundColor = color
         return self
     }
-    
+
     public func addSeparatedSubview(_ subview: UIView, animated: Bool = false) -> Self {
         if !subviews.isEmpty {
             addSeparator()
@@ -40,13 +40,13 @@ open class VerticalStackLayoutView: UIStackView {
                 self.addSubview(subview)
             }, completion: nil)
         }
-        
+
         subview.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor).isActive = true
         subview.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor).isActive = true
         return self
     }
-    
-    public func removeSeparatedSubview(_ subview: UIView, animated: Bool = false) -> Self{
+
+    public func removeSeparatedSubview(_ subview: UIView, animated: Bool = false) -> Self {
         if subviews.contains(subview) {
             removeArrangedSubview(subview)
             if !animated {
@@ -61,31 +61,31 @@ open class VerticalStackLayoutView: UIStackView {
                 separator.removeFromSuperview()
             }
         }
-        
+
         return self
     }
-    
+
     public func setSeparatorColor(_ color: UIColor) -> Self {
         separatorColor = color
         return self
     }
-    
+
     public func setSpacing(_ spacing: CGFloat) -> Self {
         self.spacing = spacing
         return self
     }
-    
+
     public func setPadding(_ padding: UIEdgeInsets) -> Self {
         layoutMargins = padding
         isLayoutMarginsRelativeArrangement = true
         return self
     }
-    
+
     public func setRadius(_ radius: CGFloat) -> Self {
         layer.cornerRadius = radius
         return self
     }
-    
+
     private func addSeparator() {
         let separator = UIView()
         addArrangedSubview(separator)

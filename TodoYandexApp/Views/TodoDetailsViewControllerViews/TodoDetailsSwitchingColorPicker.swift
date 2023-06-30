@@ -7,6 +7,7 @@
 
 import UIKit
 
+// swiftlint:disable trailing_whitespace
 class TodoDetailsSwitchingColorPicker: UIStackView {
     private var switchControl: UISwitch!
     private var label: UILabel!
@@ -16,7 +17,6 @@ class TodoDetailsSwitchingColorPicker: UIStackView {
     private var brightnessLayer: CALayer!
     private let viewModel: TodoDetailsViewModel
     private var colorValue: UIColor = AssetsColors.labelPrimary
-    
     
     init(frame: CGRect = .zero, viewModel: TodoDetailsViewModel) {
         self.viewModel = viewModel
@@ -35,7 +35,6 @@ class TodoDetailsSwitchingColorPicker: UIStackView {
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     
     private func configureSubviews() {
         container = UIView()
@@ -121,13 +120,13 @@ class TodoDetailsSwitchingColorPicker: UIStackView {
         if viewModel.color == nil {
             return
         }
-        var h: CGFloat = 0
-        var s: CGFloat = 0
-        var b: CGFloat = 0
-        var a: CGFloat = 0
+        var hVal: CGFloat = 0
+        var sVal: CGFloat = 0
+        var bVal: CGFloat = 0
+        var aVal: CGFloat = 0
         
-        if viewModel.color!.getHue(&h, saturation: &s, brightness: &b, alpha: &a) {
-            brightnessSlider.value = Float(b)
+        if viewModel.color!.getHue(&hVal, saturation: &sVal, brightness: &bVal, alpha: &aVal) {
+            brightnessSlider.value = Float(bVal)
         }
     }
     
@@ -140,7 +139,7 @@ class TodoDetailsSwitchingColorPicker: UIStackView {
     @objc private func sliderValueChanged() {
         if brightnessLayer == nil {
             brightnessLayer = CALayer()
-            brightnessLayer.frame = gradientView.bounds;
+            brightnessLayer.frame = gradientView.bounds
             brightnessLayer.backgroundColor = UIColor.black.cgColor
             brightnessLayer.opacity = 0.0
             gradientView.layer.addSublayer(brightnessLayer)
@@ -149,3 +148,4 @@ class TodoDetailsSwitchingColorPicker: UIStackView {
         brightnessLayer.opacity = 1 - brightnessSlider.value
     }
 }
+// swiftlint:enable trailing_whitespace
