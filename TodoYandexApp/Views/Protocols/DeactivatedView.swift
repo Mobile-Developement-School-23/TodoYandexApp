@@ -9,6 +9,7 @@ import UIKit
 
 /// Views conforming to thish protocol needs to be activated for showing
 /// Comonnly it's just activating constraints and sets isHidden to false :D
+@MainActor
 protocol DeactivatedView {
     func activateView(with constraints: [NSLayoutConstraint])
     // swiftlint:disable function_parameter_count

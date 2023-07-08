@@ -40,7 +40,7 @@ class TodoDetailsViewModel {
         self.todoItem = makeTodoItem()
     }
 
-    func deleteTodoItem() {
+    @MainActor func deleteTodoItem() {
         controller?.onTodoItemDeleted()
     }
 
@@ -92,6 +92,7 @@ class TodoDetailsViewModel {
     }
 }
 
+@MainActor
 protocol TodoDetailsViewModelMainHandler {
     func onFileSaveError()
 

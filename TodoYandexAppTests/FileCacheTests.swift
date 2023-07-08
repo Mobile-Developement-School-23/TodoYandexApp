@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import FileCachePackage
 
 final class FileCacheTests: XCTestCase {
     func testSetAndRemove() {

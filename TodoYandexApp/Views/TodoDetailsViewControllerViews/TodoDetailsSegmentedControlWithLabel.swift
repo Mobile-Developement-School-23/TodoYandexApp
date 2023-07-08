@@ -7,6 +7,7 @@
 
 import UIKit
 
+@MainActor
 class TodoDetailsSegmentedControlWithLabel: UIView {
     private weak var viewModel: TodoDetailsViewModel?
     private var segmentedControl: StyledSegmentedControl!

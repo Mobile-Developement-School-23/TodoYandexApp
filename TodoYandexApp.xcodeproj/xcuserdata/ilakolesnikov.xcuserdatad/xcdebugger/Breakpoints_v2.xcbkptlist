@@ -3,4 +3,116 @@
    uuid = "00D37CCE-0107-40F2-B7A9-9111D0B3787D"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CFCA053E-DF8B-4CA9-B38D-67FF3D7D1C9F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TodoYandexApp/Models/Services/ServerModelSynchronizer.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "149"
+            endingLineNumber = "149"
+            landmarkName = "onApiFailure()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3DED5528-C254-4511-8457-D048FC60ED55"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TodoYandexApp/Models/Services/DefaultApiAccessor.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "346"
+            endingLineNumber = "346"
+            landmarkName = "retryUpdateTodoItem(_:_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "3DED5528-C254-4511-8457-D048FC60ED55 - 37162e46788351eb"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for TodoYandexApp.DefaultApiAccessor.retryUpdateTodoItem(TodoYandexApp.TodoItem, Swift.Int) async -&gt; ()"
+                  moduleName = "TodoYandexApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ilakolesnikov/Documents/Swift/YandexTodoApp/TodoYandexApp/Models/Services/DefaultApiAccessor.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "346"
+                  endingLineNumber = "346"
+                  offsetFromSymbolStart = "324">
+               </Location>
+               <Location
+                  uuid = "3DED5528-C254-4511-8457-D048FC60ED55 - 729f64e124624d01"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) await resume partial function for TodoYandexApp.DefaultApiAccessor.retryUpdateTodoItem(TodoYandexApp.TodoItem, Swift.Int) async -&gt; ()"
+                  moduleName = "TodoYandexApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ilakolesnikov/Documents/Swift/YandexTodoApp/TodoYandexApp/Models/Services/DefaultApiAccessor.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "344"
+                  endingLineNumber = "344"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  uuid = "3DED5528-C254-4511-8457-D048FC60ED55 - c7383139e88afa2b"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for TodoYandexApp.DefaultApiAccessor.retryUpdateTodoItem(TodoYandexApp.TodoItem, Swift.Int) async -&gt; ()"
+                  moduleName = "TodoYandexApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ilakolesnikov/Documents/Swift/YandexTodoApp/TodoYandexApp/Models/Services/DefaultApiAccessor.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "344"
+                  endingLineNumber = "344"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  uuid = "3DED5528-C254-4511-8457-D048FC60ED55 - 57e2582c988c3629"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(5) suspend resume partial function for TodoYandexApp.DefaultApiAccessor.retryUpdateTodoItem(TodoYandexApp.TodoItem, Swift.Int) async -&gt; ()"
+                  moduleName = "TodoYandexApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ilakolesnikov/Documents/Swift/YandexTodoApp/TodoYandexApp/Models/Services/DefaultApiAccessor.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "344"
+                  endingLineNumber = "344"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C4CA02A1-C63B-43AA-9334-A14E9DB195A5"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TodoYandexApp/Models/Services/DefaultApiAccessor.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "226"
+            endingLineNumber = "226"
+            landmarkName = "updateTodoItem(_:_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

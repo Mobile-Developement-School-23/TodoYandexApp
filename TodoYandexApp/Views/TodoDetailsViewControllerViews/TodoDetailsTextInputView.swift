@@ -7,6 +7,7 @@
 
 import UIKit
 
+@MainActor
 class TodoDetailsTextInputView: UIExpandingTextView, DeactivatedView {
     override init(frame: CGRect = CGRect(), textContainer: NSTextContainer?) {
         super.init(textContainer: textContainer)

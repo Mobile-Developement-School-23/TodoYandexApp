@@ -194,32 +194,36 @@ class TodoDetailsStackView: UIStackView, DeactivatedView {
 }
 
 extension TodoDetailsStackView: UICalendarSelectionSingleDateDelegate, TodoDetailsCalendarSwitchDelegate {
-    func dateSelection(_ selection: UICalendarSelectionSingleDate, didSelectDate dateComponents: DateComponents?) {
+    nonisolated func dateSelection(_ selection: UICalendarSelectionSingleDate, didSelectDate dateComponents: DateComponents?) {
         guard let dateComponents = dateComponents else {
             return
         }
 
-        viewModel?.onDateChanged(dateComponents.date)
+        DispatchQueue.main.async {
+            self.viewModel?.onDateChanged(dateComponents.date)
+        }
     }
 
-    func onValueChanged(value: Bool) {
-        guard let viewModel = viewModel else {
-            return
-        }
-        if value {
-            if !isCalendarViewShowed {
-                _ = fieldsStackView.addSeparatedSubview(calendarView, animated: true)
-                isCalendarViewShowed = true
+    nonisolated func onValueChanged(value: Bool) {
+        DispatchQueue.main.async {
+            guard let viewModel = self.viewModel else {
+                return
             }
-            if viewModel.deadline == nil {
-                viewModel.onDateChanged(Date.now.addingTimeInterval(86400))
+            if value {
+                if !self.isCalendarViewShowed {
+                    _ = self.fieldsStackView.addSeparatedSubview(self.calendarView, animated: true)
+                    self.isCalendarViewShowed = true
+                }
+                if viewModel.deadline == nil {
+                    viewModel.onDateChanged(Date.now.addingTimeInterval(86400))
+                }
+            } else {
+                if self.isCalendarViewShowed {
+                    _ = self.fieldsStackView.removeSeparatedSubview(self.calendarView, animated: true)
+                    self.isCalendarViewShowed = false
+                }
+                viewModel.onDateChanged(nil)
             }
-        } else {
-            if isCalendarViewShowed {
-                _ = fieldsStackView.removeSeparatedSubview(calendarView, animated: true)
-                isCalendarViewShowed = false
-            }
-            viewModel.onDateChanged(nil)
         }
     }
 }
