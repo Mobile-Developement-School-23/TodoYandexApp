@@ -13,6 +13,8 @@ class TodoListViewController: UIViewController {
     private let tableView = TodoListTableView()
     private let tableViewCover = UIView()
     private var briefingView: TodoListBriefingView!
+    var activityIndicator = UIActivityIndicatorView(style: .medium)
+    var serverModel: ServerModelSynchronizer!
 
     var data = [TodoItem]()
     lazy var fileCache = FileCache<TodoItem>()
@@ -30,6 +32,9 @@ class TodoListViewController: UIViewController {
 extension TodoListViewController {
     private func prepareModel() {
         try? fileCache.loadFromJsonFile(withURL: ModelValues.todosUrl)
+        serverModel = ServerModelSynchronizer(fileCache: fileCache)
+        serverModel.controller = self
+        serverModel.loadModel()
         onItemsChanged()
     }
 
@@ -93,6 +98,7 @@ extension TodoListViewController {
 
     private func configureController() {
         navigationItem.title = "Мои дела"
+        navigationItem.setLeftBarButton(UIBarButtonItem(customView: activityIndicator), animated: true)
         tableView.register(TodoListCell.self, forCellReuseIdentifier: "cell")
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "defaultCell")
     }

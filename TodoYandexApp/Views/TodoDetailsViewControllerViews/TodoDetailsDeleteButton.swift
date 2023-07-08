@@ -7,6 +7,7 @@
 
 import UIKit
 
+@MainActor
 class TodoDetailsDeleteButton: UIButton, DeactivatedView {
     override init(frame: CGRect) {
         super.init(frame: frame)

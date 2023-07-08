@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum TodoItemImportance: String {
+enum TodoItemImportance: String, Codable {
     case basic
     case low
     case important

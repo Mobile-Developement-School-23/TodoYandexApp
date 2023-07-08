@@ -37,32 +37,33 @@ class AssetsFonts {
     static let footnote = UIFont.systemFont(ofSize: 13, weight: .semibold)
 }
 
+@MainActor
 class AssetsImages {
     static let gradientImage = UIImage(named: "Gradient")
-    static var checkedImage = {
+    static private(set) var checkedImage = {
         var configuration = UIImage.SymbolConfiguration(
             paletteColors: [AssetsColors.colorWhite, AssetsColors.colorGreen])
             .applying(UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: 24)))
         return UIImage(systemName: "checkmark.circle.fill", withConfiguration: configuration)!
     }()
-    static var invertedCheckedImage = {
+    static private(set) var invertedCheckedImage = {
         var configuration = UIImage.SymbolConfiguration(paletteColors:
                                                             [AssetsColors.colorGreen, AssetsColors.colorWhite])
             .applying(UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: 24)))
         return UIImage(systemName: "checkmark.circle.fill", withConfiguration: configuration)!
     }()
-    static var defaultCheckmarkImage = {
+    static private(set) var defaultCheckmarkImage = {
         var configuration = UIImage.SymbolConfiguration(paletteColors: [AssetsColors.supportSeparator])
             .applying(UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: 24)))
         return UIImage(systemName: "circle", withConfiguration: configuration)!
     }()
-    static var errorCheckmarkImage = {
+    static private(set) var errorCheckmarkImage = {
         var configuration = UIImage.SymbolConfiguration(paletteColors: [AssetsColors.colorRed])
             .applying(UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: 24)))
         return UIImage(systemName: "circle", withConfiguration: configuration)!
     }()
 
-    static var exclamationImage = {
+    static private(set) var exclamationImage = {
         var config = UIImage.SymbolConfiguration(paletteColors: [AssetsColors.colorRed])
         config = config.applying(UIImage.SymbolConfiguration(weight: .bold))
 
@@ -70,24 +71,24 @@ class AssetsImages {
                        withConfiguration: config)!.withTintColor(AssetsColors.colorRed, renderingMode: .alwaysOriginal)
     }()
 
-    static var arrowDownImage = {
+    static private(set) var arrowDownImage = {
         return UIImage(systemName: "arrow.down")!.withTintColor(AssetsColors.colorGray, renderingMode: .alwaysOriginal)
     }()
 
-    static var infoImage = {
+    static private(set) var infoImage = {
         var configuration = UIImage.SymbolConfiguration(paletteColors:
                                                             [AssetsColors.colorGrayLight, AssetsColors.colorWhite])
             .applying(UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: 24)))
         return UIImage(systemName: "info.circle.fill", withConfiguration: configuration)!
     }()
 
-    static var trashImage = {
+    static private(set) var trashImage = {
         var configuration = UIImage.SymbolConfiguration(paletteColors: [AssetsColors.colorWhite])
             .applying(UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: 24)))
         return UIImage(systemName: "trash.fill", withConfiguration: configuration)!
     }()
 
-    static var caldendarImage = {
+    static private(set) var caldendarImage = {
         var configuration = UIImage.SymbolConfiguration(paletteColors: [AssetsColors.labelTertiary])
             .applying(UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: 15)))
         return UIImage(systemName: "calendar", withConfiguration: configuration)!

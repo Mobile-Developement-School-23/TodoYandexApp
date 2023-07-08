@@ -8,7 +8,7 @@
 import UIKit
 import CocoaLumberjackSwift
 
-// swiftlint:disable trailing_whitespace
+@MainActor
 class TodoDetailsViewController: UIViewController, TodoDetailsNavigationViewDelegate {
     typealias TodoDelegate = (TodoItem) -> Void
     
@@ -46,18 +46,22 @@ class TodoDetailsViewController: UIViewController, TodoDetailsNavigationViewDele
         DDLogDebug("Details controller dismissed")
     }
     
-    func closeButtonClicked() {
-        dismiss(animated: true)
+    nonisolated func closeButtonClicked() {
+        DispatchQueue.main.async {
+            self.dismiss(animated: true)
+        }
     }
     
-    func saveButtonClicked() {
-        viewModel.saveChanges()
-        guard let saved = saved else {
-            closeButtonClicked()
-            return
+    nonisolated func saveButtonClicked() {
+        DispatchQueue.main.async {
+            self.viewModel.saveChanges()
+            guard let saved = self.saved else {
+                self.closeButtonClicked()
+                return
+            }
+            saved(self.viewModel.makeTodoItem())
+            self.closeButtonClicked()
         }
-        saved(viewModel.makeTodoItem())
-        closeButtonClicked()
     }
     
     func setTodoItem(_ item: TodoItem?) {
@@ -102,4 +106,3 @@ extension TodoDetailsViewController: TodoDetailsViewModelMainHandler {
         closeButtonClicked()
     }
 }
-// swiftlint:enable trailing_whitespace
