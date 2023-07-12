@@ -10,22 +10,42 @@ import CocoaLumberjackSwift
 
 extension URLSession {
     func dataTask(for urlRequest: URLRequest) async throws -> (Data, URLResponse) {
-        return try await withCheckedThrowingContinuation { contination in
-            let task = dataTask(with: urlRequest) { data, response, error in
-                if let error = error {
-                    DDLogDebug("Error while dataTask: \(error.localizedDescription)")
+        var task: URLSessionTask?
+        return try await withTaskCancellationHandler {
+            try await withCheckedThrowingContinuation { contination in
+                task = dataTask(with: urlRequest) { data, response, error in
+                    do {
+                        try Task.checkCancellation()
+                    } catch {
+                        contination.resume(throwing: error)
+                        return
+                    }
+                    
+                    if let error = error {
+                        DDLogDebug("Error while dataTask: \(error.localizedDescription)")
+                        contination.resume(throwing: error)
+                        return
+                    }
+                    
+                    guard let data = data, let response = response else {
+                        fatalError("Unexpectedly found nil in data or/and response in dataTask")
+                    }
+                    
+                    contination.resume(returning: (data, response))
+                }
+                
+                do {
+                    try Task.checkCancellation()
+                } catch {
+                    task?.cancel()
                     contination.resume(throwing: error)
                     return
                 }
                 
-                guard let data = data, let response = response else {
-                    fatalError("Unexpectedly found nil in data or/and response in dataTask")
-                }
-                
-                contination.resume(returning: (data, response))
+                task?.resume()
             }
-            
-            task.resume()
+        } onCancel: { [weak task] in
+            task?.cancel()
         }
     }
 }

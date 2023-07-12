@@ -16,22 +16,21 @@ extension TodoListViewController {
     }
 
     func onDetailedTodoItemChanged(item: TodoItem) {
-        if fileCache.itemsById.keys.contains(item.id) {
-            fileCache.set(item: item)
-            serverModel.updateItem(item)
-        } else {
-            fileCache.set(item: item)
-            serverModel.addItem(item)
-        }
+        fileCache.set(item: item)
         try? fileCache.saveAsJsonFile(withURL: ModelValues.todosUrl)
         onItemsChanged()
+        if fileCache.itemsById.keys.contains(item.id) {
+            serverModel.updateItem(item)
+        } else {
+            serverModel.addItem(item)
+        }
     }
 
     func onDetailedTodoItemDeleted(item: TodoItem) {
         fileCache.remove(item: item)
-        serverModel.deleteItem(item)
         try? fileCache.saveAsJsonFile(withURL: ModelValues.todosUrl)
         onItemsChanged()
+        serverModel.deleteItem(item)
     }
 
     func onCompletedSwitchClicked(_ isOn: Bool) {

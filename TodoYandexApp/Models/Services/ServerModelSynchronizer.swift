@@ -15,7 +15,6 @@ class ServerModelSynchronizer {
     
     private var remoteItems: [TodoItem] = []
     
-    private var isDurty = true
     private var isInMerging = false
     
     //Писал в чат по поводу этой волшебной штуки, она FIFO
@@ -39,7 +38,7 @@ class ServerModelSynchronizer {
     }
     
     func deleteItem(_ item: TodoItem) {
-        remoteItems.removeAll(where: {$0.id == item.id})
+        remoteItems = Array(fileCache.itemsById.values)
         
         Task {
             lockMutex()
@@ -51,12 +50,7 @@ class ServerModelSynchronizer {
     }
     
     func addItem(_ item: TodoItem) {
-        if !remoteItems.contains(where: {$0.id == item.id}) {
-            remoteItems.append(item)
-        } else {
-            updateItem(item)
-            return
-        }
+        remoteItems = Array(fileCache.itemsById.values)
         
         Task {
             lockMutex()
@@ -68,8 +62,7 @@ class ServerModelSynchronizer {
     }
     
     func updateItem(_ item: TodoItem) {
-        remoteItems.removeAll(where: {$0.id == item.id})
-        remoteItems.append(item)
+        remoteItems = Array(fileCache.itemsById.values)
         
         Task {
             lockMutex()
@@ -97,7 +90,7 @@ class ServerModelSynchronizer {
                 remoteItems = newItems
                 applyRemoteItems()
             }
-            isDurty = false
+            setIsDurty(false)
             isInMerging = false
             requestEnded()
             unlockMutex()
@@ -135,6 +128,14 @@ class ServerModelSynchronizer {
     
     private func getStoredRevision() -> Int32 {
         return UserDefaults.standard.object(forKey: "revision") as? Int32 ?? 0
+    }
+    
+    private func getIsDirty() -> Bool {
+        return UserDefaults.standard.object(forKey: "dirty") as? Bool ?? false
+    }
+    
+    private func setIsDurty(_ value: Bool) {
+        UserDefaults.standard.set(value, forKey: "dirty")
     }
     
     private func onRevisionChanged(_ revision: Int32) {
