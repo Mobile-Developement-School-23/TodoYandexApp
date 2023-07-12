@@ -11,6 +11,7 @@ import CocoaLumberjackSwift
 class DefaultApiAccessor: ApiAccessor {
     private let minDelay = 2.0
     private let maxDelay = 120.0
+    private let syncRequestDelay = 2.0
     private let delayFactor = 1.5
     private let delayTryesCount = 5
     
@@ -312,12 +313,12 @@ class DefaultApiAccessor: ApiAccessor {
     }
     
     private func retryLoadTodoItems(_ tryNum: Int) async -> [TodoItem] {
-        try? await Task.sleep(for: .seconds(getDelay(tryNum)))
+        try? await Task.sleep(for: .seconds(syncRequestDelay))
         return await loadTodoItems(tryNum + 1)
     }
     
     private func retryUpdateTodoItems(_ with: [TodoItem], _ tryNum: Int) async -> [TodoItem] {
-        try? await Task.sleep(for: .seconds(getDelay(tryNum)))
+        try? await Task.sleep(for: .seconds(syncRequestDelay))
         return await updateTodoItems(with: with, tryNum + 1)
     }
     
