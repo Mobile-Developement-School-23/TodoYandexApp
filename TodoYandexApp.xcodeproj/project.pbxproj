@@ -65,6 +65,14 @@
 		79CB8EFE2A3871DE001A07EA /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CB58062A3722BC006418BC /* TodoItem.swift */; };
 		79CB8F002A3871DE001A07EA /* TodoItem+Json.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CB58102A373A1C006418BC /* TodoItem+Json.swift */; };
 		79CB8F012A3871DE001A07EA /* TodoItemImportance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CB58092A3722C6006418BC /* TodoItemImportance.swift */; };
+		79D3D3CD2A5F59C500292DEA /* TodoCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D3D3CC2A5F59C500292DEA /* TodoCache.swift */; };
+		79D3D3D52A5FE3DC00292DEA /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 79D3D3D32A5FE3DC00292DEA /* Model.xcdatamodeld */; };
+		79D3D3D72A5FECDA00292DEA /* CoreDataCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D3D3D62A5FECDA00292DEA /* CoreDataCache.swift */; };
+		79D3D3DD2A6066F000292DEA /* TodoData+CoreDataConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D3D3DC2A6066F000292DEA /* TodoData+CoreDataConversion.swift */; };
+		79D3D3DF2A608B4E00292DEA /* FileCache+TodoCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D3D3DE2A608B4E00292DEA /* FileCache+TodoCache.swift */; };
+		79D3D3E22A609B4900292DEA /* TodoCacheBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D3D3E12A609B4900292DEA /* TodoCacheBuilder.swift */; };
+		79D3D3E42A61F22800292DEA /* SQLiteCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D3D3E32A61F22800292DEA /* SQLiteCache.swift */; };
+		79D3D3E72A61F44300292DEA /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = 79D3D3E62A61F44300292DEA /* SQLite */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -135,6 +143,14 @@
 		79CB8EF52A387194001A07EA /* TodoYandexAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoYandexAppTests.swift; sourceTree = "<group>"; };
 		79CB8EFC2A3871B7001A07EA /* TodoItemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemTests.swift; sourceTree = "<group>"; };
 		79CB8F022A38C386001A07EA /* TodoYandexApp.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TodoYandexApp.xctestplan; sourceTree = "<group>"; };
+		79D3D3CC2A5F59C500292DEA /* TodoCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCache.swift; sourceTree = "<group>"; };
+		79D3D3D12A5F606100292DEA /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		79D3D3D42A5FE3DC00292DEA /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		79D3D3D62A5FECDA00292DEA /* CoreDataCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataCache.swift; sourceTree = "<group>"; };
+		79D3D3DC2A6066F000292DEA /* TodoData+CoreDataConversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoData+CoreDataConversion.swift"; sourceTree = "<group>"; };
+		79D3D3DE2A608B4E00292DEA /* FileCache+TodoCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileCache+TodoCache.swift"; sourceTree = "<group>"; };
+		79D3D3E12A609B4900292DEA /* TodoCacheBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCacheBuilder.swift; sourceTree = "<group>"; };
+		79D3D3E32A61F22800292DEA /* SQLiteCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteCache.swift; sourceTree = "<group>"; };
 		9EF0E8A79A64917EB5F1A062 /* Pods-TodoYandexApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoYandexApp.debug.xcconfig"; path = "Target Support Files/Pods-TodoYandexApp/Pods-TodoYandexApp.debug.xcconfig"; sourceTree = "<group>"; };
 		DE85028B46C5AD80C2C44B9E /* Pods-TodoYandexApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoYandexApp.release.xcconfig"; path = "Target Support Files/Pods-TodoYandexApp/Pods-TodoYandexApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -144,6 +160,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79D3D3E72A61F44300292DEA /* SQLite in Frameworks */,
 				798930EA2A588D810064BDC5 /* FileCachePackage in Frameworks */,
 				7974D1832A4F3FA90040B370 /* CocoaLumberjackSwift in Frameworks */,
 				7974D1852A4F3FA90040B370 /* CocoaLumberjackSwiftLogBackend in Frameworks */,
@@ -175,10 +192,8 @@
 		79098AFA2A56D11A00E914EA /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				79D3D3CA2A5F594A00292DEA /* Persistence */,
 				79098B012A5701D300E914EA /* Dto */,
-				79098AFB2A56D18900E914EA /* ApiAccessor.swift */,
-				79098AFD2A56D1E300E914EA /* DefaultApiAccessor.swift */,
-				798930E62A5873810064BDC5 /* ServerModelSynchronizer.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -292,6 +307,7 @@
 			children = (
 				79CB57DB2A37227A006418BC /* Assets.xcassets */,
 				79A4F6F72A464396003198F6 /* gradient.png */,
+				79D3D3D32A5FE3DC00292DEA /* Model.xcdatamodeld */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -314,6 +330,7 @@
 		79CB57C62A372279006418BC = {
 			isa = PBXGroup;
 			children = (
+				79D3D3D12A5F606100292DEA /* README.md */,
 				79B148232A4F7AA4007541C3 /* Packages */,
 				7974D1862A4F63540040B370 /* Podfile */,
 				79CB8F022A38C386001A07EA /* TodoYandexApp.xctestplan */,
@@ -377,6 +394,7 @@
 				79CB58102A373A1C006418BC /* TodoItem+Json.swift */,
 				793DDA7C2A3B312900EF2754 /* TodoItem+CSV.swift */,
 				79CB58092A3722C6006418BC /* TodoItemImportance.swift */,
+				79D3D3DC2A6066F000292DEA /* TodoData+CoreDataConversion.swift */,
 			);
 			path = TodoItem;
 			sourceTree = "<group>";
@@ -388,6 +406,7 @@
 				79A4F6F92A465489003198F6 /* UIView+colorOfPoint.swift */,
 				79A4F6FB2A465A7B003198F6 /* UIColor+String.swift */,
 				79098AF82A55DED500E914EA /* URLSession+dataTask.swift */,
+				79D3D3DE2A608B4E00292DEA /* FileCache+TodoCache.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -400,6 +419,36 @@
 				793DDA832A3BD35700EF2754 /* FileCacheTests.swift */,
 			);
 			path = TodoYandexAppTests;
+			sourceTree = "<group>";
+		};
+		79D3D3CA2A5F594A00292DEA /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				79D3D3CE2A5F5C4400292DEA /* LocalCache */,
+				79D3D3CB2A5F598300292DEA /* ServerCache */,
+				79D3D3CC2A5F59C500292DEA /* TodoCache.swift */,
+				79D3D3E12A609B4900292DEA /* TodoCacheBuilder.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
+		79D3D3CB2A5F598300292DEA /* ServerCache */ = {
+			isa = PBXGroup;
+			children = (
+				79098AFB2A56D18900E914EA /* ApiAccessor.swift */,
+				79098AFD2A56D1E300E914EA /* DefaultApiAccessor.swift */,
+				798930E62A5873810064BDC5 /* ServerModelSynchronizer.swift */,
+			);
+			path = ServerCache;
+			sourceTree = "<group>";
+		};
+		79D3D3CE2A5F5C4400292DEA /* LocalCache */ = {
+			isa = PBXGroup;
+			children = (
+				79D3D3D62A5FECDA00292DEA /* CoreDataCache.swift */,
+				79D3D3E32A61F22800292DEA /* SQLiteCache.swift */,
+			);
+			path = LocalCache;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -424,6 +473,7 @@
 				7974D1822A4F3FA90040B370 /* CocoaLumberjackSwift */,
 				7974D1842A4F3FA90040B370 /* CocoaLumberjackSwiftLogBackend */,
 				798930E92A588D810064BDC5 /* FileCachePackage */,
+				79D3D3E62A61F44300292DEA /* SQLite */,
 			);
 			productName = TodoYandexApp;
 			productReference = 79CB57CF2A372279006418BC /* TodoYandexApp.app */;
@@ -478,6 +528,7 @@
 			mainGroup = 79CB57C62A372279006418BC;
 			packageReferences = (
 				7974D17F2A4F3FA90040B370 /* XCRemoteSwiftPackageReference "CocoaLumberjack" */,
+				79D3D3E52A61F44300292DEA /* XCRemoteSwiftPackageReference "SQLite.swift" */,
 			);
 			productRefGroup = 79CB57D02A372279006418BC /* Products */;
 			projectDirPath = "";
@@ -563,6 +614,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				79A4F6D82A438F71003198F6 /* TodoDetailsScrollView.swift in Sources */,
+				79D3D3D52A5FE3DC00292DEA /* Model.xcdatamodeld in Sources */,
 				79A4F6B12A42033F003198F6 /* TodoDetailsViewController.swift in Sources */,
 				7974D1732A4988C20040B370 /* TodoListBriefingView.swift in Sources */,
 				79A4F6FA2A465489003198F6 /* UIView+colorOfPoint.swift in Sources */,
@@ -577,6 +629,7 @@
 				7974D1772A49F46C0040B370 /* TodoListCell.swift in Sources */,
 				79A4F6EF2A45B654003198F6 /* TodoDetailsTextInputView.swift in Sources */,
 				793DDA7D2A3B312900EF2754 /* TodoItem+CSV.swift in Sources */,
+				79D3D3DD2A6066F000292DEA /* TodoData+CoreDataConversion.swift in Sources */,
 				7974D17E2A4ED8B50040B370 /* TodoListViewController+Callbacks.swift in Sources */,
 				79A4F6F52A462B07003198F6 /* TodoDetailsSwitchingColorPicker.swift in Sources */,
 				79098B032A57037900E914EA /* ItemsListDto.swift in Sources */,
@@ -589,19 +642,24 @@
 				79A4F6C22A42280C003198F6 /* UIExpandingTextView.swift in Sources */,
 				79098B002A56FF0400E914EA /* TodoItemDto.swift in Sources */,
 				798930E72A5873810064BDC5 /* ServerModelSynchronizer.swift in Sources */,
+				79D3D3DF2A608B4E00292DEA /* FileCache+TodoCache.swift in Sources */,
 				79A4F6C42A42F94F003198F6 /* AssetsAcessor.swift in Sources */,
 				7974D1752A49C4010040B370 /* TodoListTableView.swift in Sources */,
 				79CB57D52A372279006418BC /* SceneDelegate.swift in Sources */,
 				79A4F6C92A430E63003198F6 /* LayoutValues.swift in Sources */,
 				7974D17C2A4ED8900040B370 /* TodoListViewController+TableView.swift in Sources */,
+				79D3D3E22A609B4900292DEA /* TodoCacheBuilder.swift in Sources */,
 				7974D16E2A48EA610040B370 /* TodoNavigationController.swift in Sources */,
 				79A4F6DE2A43B1CC003198F6 /* TodoDetailsCalendarSwitch.swift in Sources */,
+				79D3D3E42A61F22800292DEA /* SQLiteCache.swift in Sources */,
 				798930E52A5805DB0064BDC5 /* SingleItemDto.swift in Sources */,
 				79A4F6E82A444B32003198F6 /* TodoDetailsNavigationView.swift in Sources */,
 				79098AF92A55DED500E914EA /* URLSession+dataTask.swift in Sources */,
 				79098AFE2A56D1E300E914EA /* DefaultApiAccessor.swift in Sources */,
 				7974D16C2A48E74B0040B370 /* ModelValues.swift in Sources */,
+				79D3D3D72A5FECDA00292DEA /* CoreDataCache.swift in Sources */,
 				79A4F6E62A44411F003198F6 /* TodoDetailsDeleteButton.swift in Sources */,
+				79D3D3CD2A5F59C500292DEA /* TodoCache.swift in Sources */,
 				79A4F6F32A45C218003198F6 /* TodoDetailsViewModel.swift in Sources */,
 				7974D1792A4B93940040B370 /* CircleCheckboxView.swift in Sources */,
 				79098AFC2A56D18900E914EA /* ApiAccessor.swift in Sources */,
@@ -893,6 +951,14 @@
 				minimumVersion = 3.8.0;
 			};
 		};
+		79D3D3E52A61F44300292DEA /* XCRemoteSwiftPackageReference "SQLite.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stephencelis/SQLite.swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.14.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -915,7 +981,25 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = FileCachePackage;
 		};
+		79D3D3E62A61F44300292DEA /* SQLite */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 79D3D3E52A61F44300292DEA /* XCRemoteSwiftPackageReference "SQLite.swift" */;
+			productName = SQLite;
+		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		79D3D3D32A5FE3DC00292DEA /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				79D3D3D42A5FE3DC00292DEA /* Model.xcdatamodel */,
+			);
+			currentVersion = 79D3D3D42A5FE3DC00292DEA /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 79CB57C72A372279006418BC /* Project object */;
 }
