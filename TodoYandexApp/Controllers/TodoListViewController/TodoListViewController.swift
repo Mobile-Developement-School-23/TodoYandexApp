@@ -17,7 +17,8 @@ class TodoListViewController: UIViewController {
     var serverModel: ServerModelSynchronizer!
 
     var data = [TodoItem]()
-    lazy var fileCache = FileCache<TodoItem>()
+    //lazy var cache: TodoCache = FileCache<TodoItem>()
+    lazy var cache: TodoCache = CoreDataCache()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,8 +32,8 @@ class TodoListViewController: UIViewController {
 // Configuration is here
 extension TodoListViewController {
     private func prepareModel() {
-        try? fileCache.loadFromJsonFile(withURL: ModelValues.todosUrl)
-        serverModel = ServerModelSynchronizer(fileCache: fileCache)
+        cache.load()
+        serverModel = ServerModelSynchronizer(cache: cache)
         serverModel.controller = self
         serverModel.loadModel()
         onItemsChanged()
@@ -107,11 +108,11 @@ extension TodoListViewController {
 // Calls are here
 extension TodoListViewController {
     func reloadData() {
-        briefingView.setCompletedCount(fileCache.itemsById.values.filter {$0.done}.count)
+        briefingView.setCompletedCount(cache.items.filter {$0.done}.count)
         if briefingView.isButtonOn {
-            data = fileCache.itemsById.values.sorted(by: {$0.createdAt > $1.createdAt})
+            data = cache.items.sorted(by: {$0.createdAt > $1.createdAt})
         } else {
-            data = fileCache.itemsById.values.filter {!$0.done}.sorted(by: {$0.createdAt > $1.createdAt})
+            data = cache.items.filter {!$0.done}.sorted(by: {$0.createdAt > $1.createdAt})
         }
 
         UIView.animate(withDuration: 0.15, animations: {

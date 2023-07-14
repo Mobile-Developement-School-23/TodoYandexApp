@@ -16,10 +16,10 @@ extension TodoListViewController {
     }
 
     func onDetailedTodoItemChanged(item: TodoItem) {
-        fileCache.set(item: item)
-        try? fileCache.saveAsJsonFile(withURL: ModelValues.todosUrl)
+        cache.set(item: item)
+        cache.saveChanges()
         onItemsChanged()
-        if fileCache.itemsById.keys.contains(item.id) {
+        if cache.contains(withId: item.id) {
             serverModel.updateItem(item)
         } else {
             serverModel.addItem(item)
@@ -27,8 +27,8 @@ extension TodoListViewController {
     }
 
     func onDetailedTodoItemDeleted(item: TodoItem) {
-        fileCache.remove(item: item)
-        try? fileCache.saveAsJsonFile(withURL: ModelValues.todosUrl)
+        cache.remove(item: item)
+        cache.saveChanges()
         onItemsChanged()
         serverModel.deleteItem(item)
     }

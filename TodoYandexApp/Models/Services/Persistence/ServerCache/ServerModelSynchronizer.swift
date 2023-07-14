@@ -10,7 +10,7 @@ import FileCachePackage
 
 @MainActor
 class ServerModelSynchronizer {
-    private let fileCache: FileCache<TodoItem>
+    private let cache: TodoCache
     private let api = DefaultApiAccessor()
     
     private var remoteItems: [TodoItem] = []
@@ -24,8 +24,8 @@ class ServerModelSynchronizer {
     
     weak var controller: TodoListViewController?
     
-    init(fileCache: FileCache<TodoItem>) {
-        self.fileCache = fileCache
+    init(cache: TodoCache) {
+        self.cache = cache
         api.setRevisionHandler(onRevisionChanged)
         api.setRevision(getStoredRevision())
         api.errorHandler = onApiFailure
@@ -33,12 +33,12 @@ class ServerModelSynchronizer {
     }
     
     func loadModel() {
-        remoteItems = Array(fileCache.itemsById.values)
+        remoteItems = cache.items
         mergeUpdateAndReplaceWithServer()
     }
     
     func deleteItem(_ item: TodoItem) {
-        remoteItems = Array(fileCache.itemsById.values)
+        remoteItems = cache.items
         
         Task {
             lockMutex()
@@ -50,7 +50,7 @@ class ServerModelSynchronizer {
     }
     
     func addItem(_ item: TodoItem) {
-        remoteItems = Array(fileCache.itemsById.values)
+        remoteItems = cache.items
         
         Task {
             lockMutex()
@@ -62,7 +62,7 @@ class ServerModelSynchronizer {
     }
     
     func updateItem(_ item: TodoItem) {
-        remoteItems = Array(fileCache.itemsById.values)
+        remoteItems = cache.items
         
         Task {
             lockMutex()
@@ -118,10 +118,10 @@ class ServerModelSynchronizer {
     }
     
     private func applyRemoteItems() {
-        if remoteItems.sorted(by: {$0.id > $1.id}) != fileCache.itemsById.values.sorted(by: {$0.id > $1.id}) {
-            fileCache.removeRangeOfItems(withIds: Array(fileCache.itemsById.keys))
-            fileCache.setRange(ofItems: remoteItems)
-            try? fileCache.saveAsJsonFile(withURL: ModelValues.todosUrl)
+        if remoteItems.sorted(by: {$0.id > $1.id}) != cache.items.sorted(by: {$0.id > $1.id}) {
+            cache.removeRange(ofItems: cache.items)
+            cache.setRange(ofItems: remoteItems)
+            cache.saveChanges()
             controller?.reloadData()
         }
     }
