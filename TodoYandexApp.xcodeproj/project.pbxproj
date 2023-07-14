@@ -71,6 +71,8 @@
 		79D3D3DD2A6066F000292DEA /* TodoData+CoreDataConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D3D3DC2A6066F000292DEA /* TodoData+CoreDataConversion.swift */; };
 		79D3D3DF2A608B4E00292DEA /* FileCache+TodoCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D3D3DE2A608B4E00292DEA /* FileCache+TodoCache.swift */; };
 		79D3D3E22A609B4900292DEA /* TodoCacheBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D3D3E12A609B4900292DEA /* TodoCacheBuilder.swift */; };
+		79D3D3E42A61F22800292DEA /* SQLiteCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D3D3E32A61F22800292DEA /* SQLiteCache.swift */; };
+		79D3D3E72A61F44300292DEA /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = 79D3D3E62A61F44300292DEA /* SQLite */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -148,6 +150,7 @@
 		79D3D3DC2A6066F000292DEA /* TodoData+CoreDataConversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoData+CoreDataConversion.swift"; sourceTree = "<group>"; };
 		79D3D3DE2A608B4E00292DEA /* FileCache+TodoCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileCache+TodoCache.swift"; sourceTree = "<group>"; };
 		79D3D3E12A609B4900292DEA /* TodoCacheBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCacheBuilder.swift; sourceTree = "<group>"; };
+		79D3D3E32A61F22800292DEA /* SQLiteCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteCache.swift; sourceTree = "<group>"; };
 		9EF0E8A79A64917EB5F1A062 /* Pods-TodoYandexApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoYandexApp.debug.xcconfig"; path = "Target Support Files/Pods-TodoYandexApp/Pods-TodoYandexApp.debug.xcconfig"; sourceTree = "<group>"; };
 		DE85028B46C5AD80C2C44B9E /* Pods-TodoYandexApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoYandexApp.release.xcconfig"; path = "Target Support Files/Pods-TodoYandexApp/Pods-TodoYandexApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -157,6 +160,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79D3D3E72A61F44300292DEA /* SQLite in Frameworks */,
 				798930EA2A588D810064BDC5 /* FileCachePackage in Frameworks */,
 				7974D1832A4F3FA90040B370 /* CocoaLumberjackSwift in Frameworks */,
 				7974D1852A4F3FA90040B370 /* CocoaLumberjackSwiftLogBackend in Frameworks */,
@@ -441,17 +445,10 @@
 		79D3D3CE2A5F5C4400292DEA /* LocalCache */ = {
 			isa = PBXGroup;
 			children = (
-				79D3D3D22A5FE35600292DEA /* CoreData */,
+				79D3D3D62A5FECDA00292DEA /* CoreDataCache.swift */,
+				79D3D3E32A61F22800292DEA /* SQLiteCache.swift */,
 			);
 			path = LocalCache;
-			sourceTree = "<group>";
-		};
-		79D3D3D22A5FE35600292DEA /* CoreData */ = {
-			isa = PBXGroup;
-			children = (
-				79D3D3D62A5FECDA00292DEA /* CoreDataCache.swift */,
-			);
-			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -476,6 +473,7 @@
 				7974D1822A4F3FA90040B370 /* CocoaLumberjackSwift */,
 				7974D1842A4F3FA90040B370 /* CocoaLumberjackSwiftLogBackend */,
 				798930E92A588D810064BDC5 /* FileCachePackage */,
+				79D3D3E62A61F44300292DEA /* SQLite */,
 			);
 			productName = TodoYandexApp;
 			productReference = 79CB57CF2A372279006418BC /* TodoYandexApp.app */;
@@ -530,6 +528,7 @@
 			mainGroup = 79CB57C62A372279006418BC;
 			packageReferences = (
 				7974D17F2A4F3FA90040B370 /* XCRemoteSwiftPackageReference "CocoaLumberjack" */,
+				79D3D3E52A61F44300292DEA /* XCRemoteSwiftPackageReference "SQLite.swift" */,
 			);
 			productRefGroup = 79CB57D02A372279006418BC /* Products */;
 			projectDirPath = "";
@@ -652,6 +651,7 @@
 				79D3D3E22A609B4900292DEA /* TodoCacheBuilder.swift in Sources */,
 				7974D16E2A48EA610040B370 /* TodoNavigationController.swift in Sources */,
 				79A4F6DE2A43B1CC003198F6 /* TodoDetailsCalendarSwitch.swift in Sources */,
+				79D3D3E42A61F22800292DEA /* SQLiteCache.swift in Sources */,
 				798930E52A5805DB0064BDC5 /* SingleItemDto.swift in Sources */,
 				79A4F6E82A444B32003198F6 /* TodoDetailsNavigationView.swift in Sources */,
 				79098AF92A55DED500E914EA /* URLSession+dataTask.swift in Sources */,
@@ -951,6 +951,14 @@
 				minimumVersion = 3.8.0;
 			};
 		};
+		79D3D3E52A61F44300292DEA /* XCRemoteSwiftPackageReference "SQLite.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stephencelis/SQLite.swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.14.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -972,6 +980,11 @@
 		798930E92A588D810064BDC5 /* FileCachePackage */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = FileCachePackage;
+		};
+		79D3D3E62A61F44300292DEA /* SQLite */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 79D3D3E52A61F44300292DEA /* XCRemoteSwiftPackageReference "SQLite.swift" */;
+			productName = SQLite;
 		};
 /* End XCSwiftPackageProductDependency section */
 

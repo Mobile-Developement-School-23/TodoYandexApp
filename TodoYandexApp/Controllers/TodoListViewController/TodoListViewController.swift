@@ -18,7 +18,8 @@ class TodoListViewController: UIViewController {
 
     var data = [TodoItem]()
     //lazy var cache: TodoCache = FileCache<TodoItem>()
-    lazy var cache: TodoCache = CoreDataCache()
+    //lazy var cache: TodoCache = CoreDataCache()
+    lazy var cache: TodoCache = SQLiteCache()
 
     override func viewDidLoad() {
         super.viewDidLoad()
