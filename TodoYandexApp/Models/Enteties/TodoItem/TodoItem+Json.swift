@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import FileCachePackage
 
 extension TodoItem: JsonCompatible {
     /// Returns json dictionary [String: Any]
